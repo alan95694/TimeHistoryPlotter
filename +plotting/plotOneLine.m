@@ -37,7 +37,7 @@ hLine.LineWidth = str2double(propLine.pd_lineWidth);
 if ~isequal(propLine.pd_marker, "none")
     hLine.Marker = propLine.pd_marker;
 end
-
+hLine.LineStyle = propLine.pd_style;
 
 dx = xlim;
 dy = ylim;

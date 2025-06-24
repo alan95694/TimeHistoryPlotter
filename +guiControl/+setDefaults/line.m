@@ -17,7 +17,7 @@ app.templates{itmp}.axis{iaxis}.line{iline}.b_max = false;
 app.templates{itmp}.axis{iaxis}.line{iline}.pd_color        = "automatic";
 app.templates{itmp}.axis{iaxis}.line{iline}.pd_lineWidth    = "0.5";
 app.templates{itmp}.axis{iaxis}.line{iline}.pd_marker       = "none";
-
+app.templates{itmp}.axis{iaxis}.line{iline}.pd_style        = "-";
 
 
 end

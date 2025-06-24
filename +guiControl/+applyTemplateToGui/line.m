@@ -18,7 +18,7 @@ app.MinCheckBox.Value = app.templates{itmp}.axis{iaxis}.line{iline}.b_min;
 app.ColorDropDown.Value     = app.templates{itmp}.axis{iaxis}.line{iline}.pd_color;
 app.LineWidthDropDown.Value = app.templates{itmp}.axis{iaxis}.line{iline}.pd_lineWidth;
 app.MarkerDropDown.Value    = app.templates{itmp}.axis{iaxis}.line{iline}.pd_marker;
-
+app.StyleDropDown.Value     = app.templates{itmp}.axis{iaxis}.line{iline}.pd_style;
 
 end
 %% =======================================================================================

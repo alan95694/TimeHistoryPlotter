@@ -26,6 +26,7 @@ end
 % Make new unique name
 strRootName = app.DataChannelsListBox.Value;
 if any(contains(app.CurrentAxisListBox.Items, strRootName))
+    % nn = length(app.CurrentAxisListBox.Items) + 1;
     nn = 1;
     while (true)
         strTestNewName = [strRootName, '<rep ', num2str(nn), '>'];

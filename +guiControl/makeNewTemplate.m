@@ -3,15 +3,25 @@ function makeNewTemplate(app, makeDefault)
 % 
 % 
 
+if ~makeDefault
+    %% Save gui to template
+    itmp    = guiControl.getCurrentTemplateNumber(app);
+    iaxis   = guiControl.getCurrentAxisNumber(app);
+    iline   = guiControl.getCurrentDataChannelinCurrentAxisNumber(app);
+    guiControl.saveGuiToTemplate.all(app, itmp, iaxis, iline);
+end
+
+
 %% Get new unique name
 if makeDefault
-    strTestNewName = 'template_1';
+    strTestNewName = 'template 1';
 else
     nn = 1;
-    strRootName = 'template_';
+    strRootName = 'template ';
+
     while (true)
         strTestNewName = [strRootName, num2str(nn)];
-        if ~isfield(app.templates, strTestNewName)
+        if ~any(contains(app.PlottingTemplatesListBox.Items, strTestNewName))
             break
         end
         nn = nn + 1;
@@ -22,9 +32,13 @@ end
 
 if isempty(app.templates)
     itmp = 1;
+    app.templates{itmp}.name = strTestNewName;
 else
     itmp = length(app.templates) + 1;
+    app.templates{itmp}.name = strTestNewName;
 end
+
+
 
 % Figure level properties
 guiControl.setDefaults.figure(app, itmp);
@@ -38,14 +52,16 @@ guiControl.setDefaults.line(app, itmp, 1, 1, '<null>');
 
 %% Update gui
 
-if isempty(app.PlottingTemplatesListBox.Items{1})
-    app.PlottingTemplatesListBox.Items{1} = strTestNewName;
+if makeDefault % isempty(app.PlottingTemplatesListBox.Items{1})
+    app.PlottingTemplatesListBox.Items{1} = app.templates{itmp}.name;
 else
-    app.PlottingTemplatesListBox.Items{end+1} = strTestNewName;
+    app.PlottingTemplatesListBox.Items{end+1} = app.templates{itmp}.name;
+    app.PlottingTemplatesListBox.Value  = app.templates{itmp}.name;
 end
 
-% Update "Axis List"
-guiControl.listBoxSelectedChanged.plottingTemplates(app);
+
+%% Update Gui
+guiControl.listBoxSelectedChanged.templates(app, []);
 
 
 

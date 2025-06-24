@@ -12,8 +12,9 @@ end
 if strcmp(app.templates{itmp}.figure.indpChan, '<null>')
     app.IndependentChannelDropDown.Items = {app.templates{itmp}.figure.indpChan};
 else
-    error('do something here')
+    guiControl.independentChannel_DropDownOpen(app);
 end
+
 
 %% Other things
 

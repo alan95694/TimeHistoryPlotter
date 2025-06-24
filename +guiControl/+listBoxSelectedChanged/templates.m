@@ -1,7 +1,19 @@
-function plottingTemplates(app)
+function templates(app, itmpLast)
 % 
 % 
 % 
+
+
+if ~isempty(itmpLast)
+    %% Save gui to template
+    % itmp    = guiControl.getCurrentTemplateNumber(app);
+    iaxis   = guiControl.getCurrentAxisNumber(app);
+    iline   = guiControl.getCurrentDataChannelinCurrentAxisNumber(app);
+    guiControl.saveGuiToTemplate.all(app, itmpLast, iaxis, iline);
+end
+
+
+%% Update gui
 
 itmp = guiControl.getCurrentTemplateNumber(app);
 
@@ -21,14 +33,9 @@ for ii = 2:length(app.templates{itmp}.axis{iaxis}.line)
 end
 app.CurrentAxisListBox.Items = curList;
 
-% Update "Figure Properties"
-guiControl.applyTemplateToGui.figure(app, itmp);
 
-% Update "Axis Properties"
-guiControl.applyTemplateToGui.axis(app, itmp, iaxis);
-
-% Update "Line Properties"
-guiControl.applyTemplateToGui.line(app, itmp, iaxis, 1);
+%% update gui
+guiControl.applyTemplateToGui.all(app, itmp, iaxis, 1);
 
 
 end

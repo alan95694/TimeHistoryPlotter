@@ -26,8 +26,7 @@ else
     %     end
     %     nn = nn + 1;
     % end
-    strTestNewName = guiControl.makeNewUniqueNameListBox(nn, ...
-            strRootName, app.PlottingTemplatesListBox.Items);
+    strTestNewName = guiControl.makeNewUniqueNameListBox(1, strRootName, cCurNames);
 end
 
 %% Setup template with defaults
@@ -55,8 +54,7 @@ guiControl.setDefaults.line(app, itmp, 1, 1, '<null>');
 %% Update gui
 
 if makeDefault % isempty(app.PlottingTemplatesListBox.Items{1})
-    app.PlottingTemplatesListBox.Items{1}   = app.templates{itmp}.name;
-    app.PlottingTemplatesListBox.Value      = app.templates{itmp}.name;
+    app.PlottingTemplatesListBox.Items{1} = app.templates{itmp}.name;
 else
     app.PlottingTemplatesListBox.Items{end+1} = app.templates{itmp}.name;
     app.PlottingTemplatesListBox.Value  = app.templates{itmp}.name;

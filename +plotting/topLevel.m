@@ -3,6 +3,11 @@ function topLevel(app)
 % 
 % 
 
+if isempty(app.tHData)
+    uialert(app.TimeHistoryPlotterUIFigure, ...
+        'No time history data loaded.', 'Error');
+    return
+end
 
 % What are we looking at
 itmp    = guiControl.getCurrentTemplateNumber(app);

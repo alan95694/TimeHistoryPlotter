@@ -3,41 +3,31 @@ function renameTemplate(app)
 % 
 % 
 
-warning('not yet coded')
+%% Prompt where to enter new name
+uiconfirm(app.TimeHistoryPlotterUIFigure, ...
+    "Enter new name in Command Window", "Use Command Window", ...
+    "Icon","info", ...
+    "options", "Ok");
 
+itmp = guiControl.getCurrentTemplateNumber(app); 
+PROMPT = sprintf('Enter new name for template "%s": ', app.templates{itmp}.name);
 
+RESULT = input(PROMPT, 's');
 
+if isempty(RESULT)
+    uiconfirm(app.TimeHistoryPlotterUIFigure, ...
+        "Template names cant be empty", "Bad input.", ...
+        "Icon","error", ...
+        "options", "Ok");
 
-
-
-
-
-
-
-
-
-
+    return
 end
-%% =======================================================================================
-function showTextInputPopup(app)
 
-% Create popup window
-d = uifigure('Name','Enter Text','Modal',true);
-d.Position(3:4) = [300 150];  % Width x Height
+%% Apply new name
+app.templates{itmp}.name = RESULT;
 
-% Prompt label
-uilabel(d, ...
-    'Position', [20 100 260 22], ...
-    'Text', 'Please enter your name:');
-
-% Text input field
-txt = uieditfield(d, 'text', ...
-    'Position', [20 70 260 22]);
-
-% OK button
-uibutton(d, 'Text', 'OK', ...
-    'Position', [100 25 100 30], ...
-    'ButtonPushedFcn', @(btn,event) onPopupConfirm(d, txt, app));
+app.PlottingTemplatesListBox.Items{itmp} = RESULT;
+app.PlottingTemplatesListBox.Value = RESULT;
 
 end
 %% =======================================================================================

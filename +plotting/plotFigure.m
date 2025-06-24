@@ -45,7 +45,7 @@ set(hFig, 'name', setFigName);
 %% Do plotting
 for iax = 1:length(template.axis)
 
-    hCurTile = nexttile;
+    hTile(iax) = nexttile;
     hold on
 
     % --- Plot current axis ---
@@ -75,7 +75,7 @@ for iax = 1:length(template.axis)
         % Remove XTickLabel
         switch template.figure.pd_TileSpace
             case {"none", "tight", "compact"}
-                set(hCurTile, 'XTickLabel', []);
+                set(hTile(end), 'XTickLabel', []);
             otherwise
         end
     end
@@ -88,7 +88,8 @@ for iax = 1:length(template.axis)
 
     % --- Legends and x/y labels --- 
     if ~isempty(hLeg)
-        legend(hLeg, strLeg, 'Interpreter', 'none');
+        legend(hLeg, strLeg, 'Interpreter', 'none', ...
+            'location', template.axis{iax}.pd_legendLocation);
     end
     ylabel(template.axis{iax}.name, 'Interpreter', 'none');
     if (iax == length(template.axis))

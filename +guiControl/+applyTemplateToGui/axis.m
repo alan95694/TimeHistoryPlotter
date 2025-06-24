@@ -8,6 +8,9 @@ end
 %% bools
 app.TightCheckBox.Value = app.templates{itmp}.axis{iaxis}.b_tight;
 
+% pull down
+app.LegendLocationDropDown.Value = app.templates{itmp}.axis{iaxis}.pd_legendLocation;
+
 
 
 end

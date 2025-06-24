@@ -20,7 +20,13 @@ end
 
 % Bools
 app.MajorGridCheckBox.Value = app.templates{itmp}.figure.b_majorGrid;
+app.MinorGridCheckBox.Value = app.templates{itmp}.figure.b_minorGrid;
 
+% Strings
+app.sgtitleEditField.Value = app.templates{itmp}.figure.str_sgtitle;
+
+% Pull down
+app.TileSpaceDropDown.Value = app.templates{itmp}.figure.pd_TileSpace;
 
 
 end

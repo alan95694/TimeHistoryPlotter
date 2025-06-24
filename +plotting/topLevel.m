@@ -17,7 +17,8 @@ curTemplate = app.templates{itmp};
 curTHData   = app.tHData.(app.LoadedFilesListBox.Value);
 
 %% Make the plot
-plotting.plotFigure(curTemplate, curTHData);
+hWindow = app.TimeHistoryPlotterUIFigure;
+plotting.plotFigure(curTemplate, curTHData, hWindow, app.LoadedFilesListBox.Value)
 
 
 end

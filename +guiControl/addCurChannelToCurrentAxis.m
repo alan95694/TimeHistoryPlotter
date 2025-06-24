@@ -4,7 +4,9 @@ function addCurChannelToCurrentAxis(app)
 % 
 
 
-
+if isempty(app.DataChannelsListBox.Value)
+    return
+end
 
 
 

@@ -10,7 +10,7 @@ app.templates{itmp}.axis{iaxis}.b_tight = false;
 
 
 % pull down
-app.templates{itmp}.axis{iaxis}.pd_legendLocation = "best";
+app.templates{itmp}.axis{iaxis}.pd_legendLocation = "northeast";
 
 
 end

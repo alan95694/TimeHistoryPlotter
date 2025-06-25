@@ -12,11 +12,34 @@ end
 time = tHData.(template.figure.indpChan);
 fn   = fieldnames(tHData);
 
+nVertLines = str2num(template.figure.str_verticalLines);
+
 %% Setup figure
-hFig = figure(1); 
-    clf('reset')
-    reset(hFig); 
-    drawnow
+switch template.figure.pd_figure
+    case ("gcf")
+        hFig = gcf; 
+    case ("figure")
+        hFig = figure; 
+    otherwise   
+        tmp = strrep(template.figure.pd_figure, "figure(", "");
+        tmp = str2double(strrep(tmp, ")", ""));
+        hFig = figure(tmp);
+end
+
+clf('reset')
+reset(hFig); 
+drawnow
+
+% Figure size
+if ~strcmp(template.figure.pd_figureSize, 'Dont change')
+    % To do, update so upper left does not move.
+    tmp = extractBefore(template.figure.pd_figureSize, '-');
+    tmp = str2num(tmp);
+    pos = hFig.Position;
+    hFig.Position = [pos(1), pos(2), tmp];
+end
+
+
 
 % subplot spacing
 switch template.figure.pd_TileSpace
@@ -43,6 +66,7 @@ setFigName = ['Data file name: "', strDataFileName, '", plotted with "', templat
 set(hFig, 'name', setFigName);
 
 %% Do plotting
+hTile = [];
 for iax = 1:length(template.axis)
 
     hTile(iax) = nexttile;
@@ -79,29 +103,85 @@ for iax = 1:length(template.axis)
             otherwise
         end
     end
+    if ~isempty(nVertLines)
+        xline(nVertLines, 'LineWidth', 1.1);
+    end
+    if (template.figure.b_logx)
+        set(hTile(iax), 'XScale', 'log');
+    end
+
     
     % --- Axis settings ---
     if (template.axis{iax}.b_tight)
         axis tight
     end
 
-
     % --- Legends and x/y labels --- 
     if ~isempty(hLeg)
         legend(hLeg, strLeg, 'Interpreter', 'none', ...
             'location', template.axis{iax}.pd_legendLocation);
     end
-    ylabel(template.axis{iax}.name, 'Interpreter', 'none');
-    if (iax == length(template.axis))
-        xlabel(template.figure.indpChan, 'Interpreter', 'none');
-    end
+    ylabel(template.axis{iax}.name, 'Interpreter', 'none', ...
+        'FontSize', 12);
 end
 
 %% Post Plotting formatting
 
-sgtitle(template.figure.str_sgtitle)
+strXLabel = sprintf('%s %s', template.figure.indpChan, template.figure.str_postXLabelText);
+xlabel(strXLabel, 'Interpreter', 'none', ...
+    'FontSize', 12);
+
+% Apply time ranges
+dx = xlim;
+if ~isinf(template.figure.num_timeMin)
+    dx(1) = template.figure.num_timeMin;
+    arrayfun(@(x) xlim(x, dx), hTile);
+end
+if ~isinf(template.figure.num_timeMax)
+    dx(2) = template.figure.num_timeMax;
+    arrayfun(@(x) xlim(x, dx), hTile);
+end
+
+% Link axes
+if (template.figure.b_linkAxes)
+    linkaxes(hTile)
+end
+
+if (template.figure.b_fileNameInSgtitle)
+    if isempty(template.figure.str_sgtitle)
+        foo = {strDataFileName};
+    else
+        foo = {template.figure.str_sgtitle; strDataFileName};
+    end
+    sgtitle(foo, 'Interpreter', 'none');
+else
+    sgtitle(template.figure.str_sgtitle, 'Interpreter', 'none')
+end
 
 
 
 end
 %% =======================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

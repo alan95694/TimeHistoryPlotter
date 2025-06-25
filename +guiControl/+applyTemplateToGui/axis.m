@@ -6,7 +6,17 @@ if (nargin == 1)
 end
 
 %% bools
-app.TightCheckBox.Value = app.templates{itmp}.axis{iaxis}.b_tight;
+app.TightCheckBox.Value         = app.templates{itmp}.axis{iaxis}.b_tight;
+app.DontShowAxisCheckBox.Value  = app.templates{itmp}.axis{iaxis}.b_dontShow;
+app.logyCheckBox.Value          = app.templates{itmp}.axis{iaxis}.b_logy;
+
+% String
+app.LegendTitleEditField.Value      = app.templates{itmp}.axis{iaxis}.str_legendTitle;
+app.HorizontalLinesEditField.Value  = app.templates{itmp}.axis{iaxis}.str_horLines;
+
+% Numeric
+app.yminEditField.Value     = app.templates{itmp}.axis{iaxis}.num_ymin;
+app.ymaxEditField.Value     = app.templates{itmp}.axis{iaxis}.num_ymax;
 
 % pull down
 app.LegendLocationDropDown.Value = app.templates{itmp}.axis{iaxis}.pd_legendLocation;

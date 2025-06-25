@@ -69,6 +69,10 @@ set(hFig, 'name', setFigName);
 hTile = [];
 for iax = 1:length(template.axis)
 
+    if (template.axis{iax}.b_dontShow)
+        continue
+    end
+
     hTile(iax) = nexttile;
     hold on
 
@@ -115,11 +119,33 @@ for iax = 1:length(template.axis)
     if (template.axis{iax}.b_tight)
         axis tight
     end
+    if (template.axis{iax}.b_logy)
+        set(hTile(iax), 'YScale', 'log');
+    end
+    if ~isempty(template.axis{iax}.str_horLines)
+        nHorLines = str2num(template.axis{iax}.str_horLines);
+        yline(nHorLines, 'LineWidth', 1.1);
+    end
+    dy = ylim;
+    if ~isinf(template.axis{iax}.num_ymin)
+        dy(1) = template.axis{iax}.num_ymin;        
+    end
+    if ~isinf(template.axis{iax}.num_ymax)
+        dy(2) = template.axis{iax}.num_ymax;        
+    end
+    if ~isequal(ylim, dy)
+        try, ylim(dy)
+        catch, warning('Invalid ylim specified.'), end
+    end
+
 
     % --- Legends and x/y labels --- 
     if ~isempty(hLeg)
-        legend(hLeg, strLeg, 'Interpreter', 'none', ...
+        hLeg = legend(hLeg, strLeg, 'Interpreter', 'none', ...
             'location', template.axis{iax}.pd_legendLocation);
+        if ~isempty(template.axis{iax}.str_legendTitle)
+            title(hLeg, template.axis{iax}.str_legendTitle);
+        end
     end
     ylabel(template.axis{iax}.name, 'Interpreter', 'none', ...
         'FontSize', 12);
@@ -133,6 +159,11 @@ xlabel(strXLabel, 'Interpreter', 'none', ...
 
 % Apply time ranges
 dx = xlim;
+if (template.figure.num_timeMin >= template.figure.num_timeMax)
+    warning('Invalid "Time Min" or "Time Max" - will use default.')
+    template.figure.num_timeMin = -inf;
+    template.figure.num_timeMax = -inf;
+end
 if ~isinf(template.figure.num_timeMin)
     dx(1) = template.figure.num_timeMin;
     arrayfun(@(x) xlim(x, dx), hTile);

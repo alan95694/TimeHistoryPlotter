@@ -1,18 +1,20 @@
-function topLevel(app)
+function topLevel(app, file)
 % 
 % 
 % 
 
 
-
-[filename, pathname] = uigetfile('*.*', 'Pick a time history file');
-
-if isequal(filename,0) || isequal(pathname,0)
-   return
-else
-   file = fullfile(pathname, filename);
-   clear pathname filename
+if ~exist('file','var')
+    [filename, pathname] = uigetfile('*.*', 'Pick a time history file');
+    
+    if isequal(filename,0) || isequal(pathname,0)
+       return
+    else
+       file = fullfile(pathname, filename);
+       clear pathname filename
+    end
 end
+
 [FILEPATH, NAME, EXT] = fileparts(file);
 
 
@@ -35,7 +37,7 @@ T = readtable(file);
 
 % Convert table to structure (column-wise fields)
 S = table2struct(T, 'ToScalar', true);
-
+S.rowIndex = 1:height(T);
 
 %% Store data into app
 app.tHData.(NAME) = S;

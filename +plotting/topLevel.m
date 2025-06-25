@@ -3,7 +3,7 @@ function topLevel(app)
 % 
 % 
 
-if isempty(app.tHData)
+if isempty(app.tHData) || length(fieldnames(app.tHData)) == 0
     uialert(app.TimeHistoryPlotterUIFigure, ...
         'No time history data loaded.', 'Error');
     return

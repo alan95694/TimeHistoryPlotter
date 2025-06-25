@@ -4,8 +4,10 @@ function loadedFiles(app)
 % 
 
 
-
-
+if isempty(app.LoadedFilesListBox.Items)
+    app.DataChannelsListBox.Items = {};
+    return
+end
 
 % Update list of Data Channels
 strSelected = app.LoadedFilesListBox.Value;

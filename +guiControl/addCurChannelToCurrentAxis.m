@@ -8,6 +8,9 @@ if isempty(app.DataChannelsListBox.Value)
     return
 end
 
+% warning('see bug notes')
+% Bug with adding new channels after repeated channels in list
+% Maybe related to multiple thData files with different names?
 
 
 %% Add new line into axis 
@@ -15,18 +18,17 @@ itmp    = guiControl.getCurrentTemplateNumber(app);
 iaxis   = guiControl.getCurrentAxisNumber(app);
 
 if isequal(app.CurrentAxisListBox.Value, '<null>')
-    iline = 1; % overwrite default
+    ilineNew = 1; % overwrite default
 else
     % Save Line Properties to template
     ilineLast = guiControl.getCurrentDataChannelinCurrentAxisNumber(app);
     guiControl.saveGuiToTemplate.line(app, itmp, iaxis, ilineLast);
-    iline = 1 + ilineLast;
+    ilineNew = length(app.CurrentAxisListBox.Items) + 1;
 end
 
 % Make new unique name
 strRootName = app.DataChannelsListBox.Value;
 if any(contains(app.CurrentAxisListBox.Items, strRootName))
-    % nn = length(app.CurrentAxisListBox.Items) + 1;
     nn = 1;
     while (true)
         strTestNewName = [strRootName, '<rep ', num2str(nn), '>'];
@@ -35,12 +37,11 @@ if any(contains(app.CurrentAxisListBox.Items, strRootName))
         end
         nn = nn + 1;
     end
-
 else
     strTestNewName = strRootName;
 end
 
-guiControl.setDefaults.line(app, itmp, iaxis, iline, strTestNewName);
+guiControl.setDefaults.line(app, itmp, iaxis, ilineNew, strTestNewName);
 
 
 % Update list box 
@@ -53,7 +54,7 @@ app.CurrentAxisListBox.Value = strTestNewName;
 
 
 %% Update "Line Properties"
-guiControl.applyTemplateToGui.line(app, itmp, iaxis, iline);
+guiControl.applyTemplateToGui.line(app, itmp, iaxis, ilineNew);
 
 
 end

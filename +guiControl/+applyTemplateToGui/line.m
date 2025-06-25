@@ -11,6 +11,13 @@ end
 app.MaxCheckBox.Value = app.templates{itmp}.axis{iaxis}.line{iline}.b_max;
 app.MinCheckBox.Value = app.templates{itmp}.axis{iaxis}.line{iline}.b_min;
 
+app.DontShowLineCheckBox.Value      = app.templates{itmp}.axis{iaxis}.line{iline}.b_dontShow;
+app.yyaxisRightLineCheckBox.Value   = app.templates{itmp}.axis{iaxis}.line{iline}.b_yyaxisRight;
+app.IntegrateLineCheckBox.Value     = app.templates{itmp}.axis{iaxis}.line{iline}.b_integrate;
+app.DifferentiateLineCheckBox.Value = app.templates{itmp}.axis{iaxis}.line{iline}.b_differentiate;
+app.BiastoZeroLineCheckBox.Value    = app.templates{itmp}.axis{iaxis}.line{iline}.b_biasToZero;
+app.InflectionPointsLineCheckBox.Value  = app.templates{itmp}.axis{iaxis}.line{iline}.b_inflectionPoints;
+
 % strings
 
 

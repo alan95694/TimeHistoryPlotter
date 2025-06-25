@@ -73,6 +73,14 @@ for iax = 1:length(template.axis)
         continue
     end
 
+    % Find any left & right plotting
+    hasRightPlotting    = false;
+    for iline = 1:length(template.axis{iax}.line)
+        if (template.axis{iax}.line{iline}.b_yyaxisRight && ~template.axis{iax}.line{iline}.b_dontShow)
+            hasRightPlotting = true;
+        end
+    end
+
     hTile(iax) = nexttile;
     hold on
 
@@ -81,15 +89,36 @@ for iax = 1:length(template.axis)
     strLeg  = [];
     for iline = 1:length(template.axis{iax}.line)
 
+        if (template.axis{iax}.line{iline}.b_dontShow)
+            continue
+        end
+    
+        if (hasRightPlotting)
+            yyaxis left
+        end
+        if (template.axis{iax}.line{iline}.b_yyaxisRight)
+            yyaxis right
+            % Resets automatic color specification, can force with gca -> 'ColorOrder'
+            %  but has complexities with manual color specification.  
+        end
+
         strDepName = plotting.getDepName(fn, template.axis{iax}.line{iline}.name);
         if isempty(strDepName)
             % Name not in data set
-            disp(sprintf('"%s" not found in data set', template.axis{iax}.line{iline}.name));
+            fprintf('"%s" not found in data set. \n', template.axis{iax}.line{iline}.name);
             continue
         end
 
-        [hLeg(iline), strLeg{iline}] = plotting.plotOneLine(time, tHData.(strDepName), ...
+        % --- Do math on data --- 
+        [depData, strLegTxt] = plotting.doMathOnOneLine(time, tHData.(strDepName), template.axis{iax}.line{iline} );
+
+        % --- Plot data --- 
+        [hLeg(end+1), strLeg{end+1}] = plotting.plotOneLine(time, depData, ...
                         template.axis{iax}.line{iline} );
+        strLeg{end} = [strLeg{end}, strLegTxt];
+    end
+    if (hasRightPlotting)
+        yyaxis left
     end
 
     % --- Figure level settings ---

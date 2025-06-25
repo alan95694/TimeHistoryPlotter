@@ -1,4 +1,4 @@
-function renameTemplate(app)    
+function renameAxis(app)    
 % 
 % 
 % 
@@ -16,13 +16,13 @@ uiconfirm(app.TimeHistoryPlotterUIFigure, ...
     "options", "Ok");
 
 itmp = guiControl.getCurrentTemplateNumber(app); 
-PROMPT = sprintf('Enter new name for template "%s": ', app.templates{itmp}.name);
+PROMPT = sprintf('Enter new name for axis "%s": ', app.templates{itmp}.axis{iaxis}.name);
 
 RESULT = input(PROMPT, 's');
 
 if isempty(RESULT)
     uiconfirm(app.TimeHistoryPlotterUIFigure, ...
-        "Template names cant be empty", "Bad input.", ...
+        "Axus names cant be empty", "Bad input.", ...
         "Icon","error", ...
         "options", "Ok");
 
@@ -30,10 +30,10 @@ if isempty(RESULT)
 end
 
 %% Apply new name
-app.templates{itmp}.name = RESULT;
+app.templates{itmp}.axis{iaxis}.name = RESULT;
 
-app.PlottingTemplatesListBox.Items{itmp} = RESULT;
-app.PlottingTemplatesListBox.Value = RESULT;
+app.AxisListListBox.Items{iaxis} = RESULT;
+app.AxisListListBox.Value = RESULT;
 
 end
 %% =======================================================================================

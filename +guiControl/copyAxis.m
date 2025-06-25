@@ -1,4 +1,4 @@
-function copyTemplate(app)
+function copyAxis(app)
 % 
 % 
 % 
@@ -12,18 +12,18 @@ guiControl.saveGuiToTemplate.all(app, itmp, iaxis, iline);
 
 
 %% Make new unique name
-strOrgName  = [app.templates{itmp}.name, ' copy '];
-cCurNames   = app.PlottingTemplatesListBox.Items;
+strOrgName  = [app.templates{itmp}.axis{iaxis}.name, ' copy '];
+cCurNames   = app.AxisListListBox.Items;
 strNewName  = guiControl.makeNewUniqueNameListBox(1, strOrgName, cCurNames);
 
 
 %% Copy template
-app.templates{end+1} = app.templates{itmp};
-app.templates{end}.name = strNewName;
+app.templates{itmp}.axis{end+1} = app.templates{itmp}.axis{iaxis};
+app.templates{itmp}.axis{end}.name = strNewName;
 
 %% Update gui
-app.PlottingTemplatesListBox.Items{end+1} = strNewName;
-app.PlottingTemplatesListBox.Value = strNewName;
+app.AxisListListBox.Items{end+1} = strNewName;
+app.AxisListListBox.Value = strNewName;
 
 
 end

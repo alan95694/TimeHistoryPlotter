@@ -4,23 +4,23 @@ function makeDemoData
 % 
 
 
-fileName = 'DemoData_02.csv';
+fileName = 'DemoData_03.csv';
 
-tt = [0:0.1:10]';
+tt = [0:0.05:100]';
 
 A = 20.* sin(tt);
 B = 12.5.* sin(0.5.*tt);
-C = 35.0 .* sin(1.5.*tt) + (5.*rand(numel(tt),1)-2.5);
-D = (B > 5 | B < -5) .* 10 ; 
+C = 35.0 .* sin(0.4.*tt) + (30.*rand(numel(tt),1)-15) + 0.5.*tt;
+D = 20.* sin(1.*tt) + 5.* sin(0.1.*tt) + (15.*rand(numel(tt),1)-7.5);
 
 
 
 figure(1), clf, hold on
     % plot(tt, A)
-    plot(tt, B)
+    % plot(tt, B)
     % plot(tt, C)
     plot(tt, D)
-
+% return
 
 
 %% Save to file

@@ -14,11 +14,13 @@ end
 
 
 %% Save to file
-
 templates = app.templates;
 save(fullfile(pathName, fileName), 'templates');
 
-
+%% Talk to user
+uialert(app.TimeHistoryPlotterUIFigure, "All avalible template(s) saved to file.", ...
+    "File Saved.", ...
+    "Icon","success");
 
 end
 %% =======================================================================================

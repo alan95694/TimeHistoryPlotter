@@ -21,8 +21,9 @@ tmpLoaded = tmpLoaded.templates;
 %%  Put loaded templates into gui
 
 % ToDo: pull downs, check loaded value is in field
-
+itmpApp = length(app.PlottingTemplatesListBox.Items);
 for itmp = 1:length(tmpLoaded)
+    itmpApp = itmpApp + 1;
     
     % Make new default template
     guiControl.makeNewTemplate(app, false);
@@ -47,7 +48,7 @@ for itmp = 1:length(tmpLoaded)
     end
     guiControl.renameTemplate(app, strNewTemplateName)
 
-    
+
     % Apply "figure" properties
     %  Put what was loaded into what was made by default
     for curFd = fieldnames(tmpLoaded{itmp}.figure)'
@@ -59,7 +60,7 @@ for itmp = 1:length(tmpLoaded)
         
         % --- Axis properties --- 
         % Make new one with default properties
-        guiControl.setDefaults.axis(app, itmp, iax, tmpLoaded{itmp}.axis{iax}.name);
+        guiControl.setDefaults.axis(app, itmpApp, iax, tmpLoaded{itmp}.axis{iax}.name);
         
         for curFd = fieldnames(tmpLoaded{itmp}.axis{iax})'
             if strcmp(curFd{1}, 'line')
@@ -72,7 +73,7 @@ for itmp = 1:length(tmpLoaded)
         for iline = 1:length(tmpLoaded{itmp}.axis{iax}.line)
             
             % Make default line
-            guiControl.setDefaults.line(app, itmp, iax, iline, ...
+            guiControl.setDefaults.line(app, itmpApp, iax, iline, ...
                     tmpLoaded{itmp}.axis{iax}.line{iline}.name);
 
             for curFd = fieldnames( tmpLoaded{itmp}.axis{iax}.line{iline} )'
@@ -82,9 +83,11 @@ for itmp = 1:length(tmpLoaded)
         end        
     end
 
-    % Update what is visible in gui
-    guiControl.listBoxSelectedChanged.templates(app, length(app.templates{end}) );
+    % Make gui reflect template structure
+    app.PlottingTemplatesListBox.Value  = app.PlottingTemplatesListBox.Items{end};
 
+    % Update what is visible in gui
+    guiControl.listBoxSelectedChanged.templates(app, [] );
 end
 
 

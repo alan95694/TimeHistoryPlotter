@@ -29,12 +29,26 @@ if isempty(strNewName)
     
         return
     end
-
-    warning('ToDo make sure is unique')
-
 else
     RESULT = strNewName;
 end
+
+%% Ensure new name is unique
+if any(contains(app.PlottingTemplatesListBox.Items, RESULT))
+    disp('Rename to make unique.')
+    RESULT = [RESULT, ' '];
+    % Add number to make unique
+    nn = 1;
+    while (true)
+        strNewName = [RESULT, num2str(nn)];
+        if ~any(contains(app.PlottingTemplatesListBox.Items, strNewName))
+            break
+        end
+        nn = nn + 1;
+    end
+    RESULT = strNewName;
+end
+
 
 %% Apply new name
 app.templates{itmp}.name = RESULT;

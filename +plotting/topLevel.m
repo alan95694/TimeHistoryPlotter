@@ -19,7 +19,8 @@ guiControl.saveGuiToTemplate.all(app, itmp, iaxis, iline);
 
 %% Gather data
 curTemplate = app.templates{itmp};
-curTHData   = app.tHData.(app.LoadedFilesListBox.Value);
+curTHData   = app.tHData.(...
+            matlab.lang.makeValidName(app.LoadedFilesListBox.Value));
 
 %% Make the plot
 

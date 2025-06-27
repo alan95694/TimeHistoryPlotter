@@ -11,7 +11,7 @@ end
 
 % Update list of Data Channels
 strSelected = app.LoadedFilesListBox.Value;
-fn = fieldnames( app.tHData.(strSelected) );
+fn = fieldnames( app.tHData.( matlab.lang.makeValidName(strSelected)) );
 
 app.DataChannelsListBox.Items = fn;
 app.DataChannelsListBox.Value = fn{1};

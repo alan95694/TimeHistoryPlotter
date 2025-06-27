@@ -192,7 +192,8 @@ for iax = 1:length(template.axis)
     % --- Legends and x/y labels --- 
     if ~isempty(hLeg) && ~strcmp(template.axis{iax}.pd_legendLocation, 'none')
         hLeg = legend(hLeg, strLeg, 'Interpreter', 'none', ...
-            'location', template.axis{iax}.pd_legendLocation);
+            'location', template.axis{iax}.pd_legendLocation, ...
+            'fontsize', 9);
         if ~isempty(template.axis{iax}.str_legendTitle)
             title(hLeg, template.axis{iax}.str_legendTitle);
         end

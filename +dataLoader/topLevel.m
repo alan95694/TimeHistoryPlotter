@@ -41,7 +41,8 @@ S = table2struct(T, 'ToScalar', true);
 S.rowIndex = (1:height(T))';
 
 %% Store data into app
-app.tHData.(NAME) = S;
+varNAME = matlab.lang.makeValidName(NAME);
+app.tHData.(varNAME) = S;
 
 
 %% update gui

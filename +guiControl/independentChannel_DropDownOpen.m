@@ -12,7 +12,7 @@ selectedStart = app.IndependentChannelDropDown.Value;
 
 
 %% Check if current Value is in TH data set
-curTHData = app.tHData.(app.LoadedFilesListBox.Value);
+curTHData = app.tHData.(matlab.lang.makeValidName(app.LoadedFilesListBox.Value));
 
 if isfield(curTHData, app.IndependentChannelDropDown.Value)
     % Current selectd value is in data set

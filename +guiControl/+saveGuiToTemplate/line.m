@@ -13,7 +13,6 @@ app.templates{itmp}.axis{iaxis}.line{iline}.b_yyaxisRight   = app.yyaxisRightLin
 app.templates{itmp}.axis{iaxis}.line{iline}.b_integrate     = app.IntegrateLineCheckBox.Value;
 app.templates{itmp}.axis{iaxis}.line{iline}.b_differentiate = app.DifferentiateLineCheckBox.Value;
 app.templates{itmp}.axis{iaxis}.line{iline}.b_biasToZero    = app.BiastoZeroLineCheckBox.Value;
-app.templates{itmp}.axis{iaxis}.line{iline}.b_inflectionPoints  = app.InflectionPointsLineCheckBox.Value;
 app.templates{itmp}.axis{iaxis}.line{iline}.b_applySmoothData   = app.ApplySmoothDataLineCheckBox.Value;
 app.templates{itmp}.axis{iaxis}.line{iline}.b_applyFilter       = app.ApplyFilterLineCheckBox.Value;
 

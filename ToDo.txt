@@ -3,11 +3,10 @@
 Notes on what to do
 
 --- data loading --- 
-time format
+time format - continue testing
 
 
 --- Bug fix or must do --- 
-Specify time format - plot in time formats
 Add tooltips
 finalize figure sizes before release
 

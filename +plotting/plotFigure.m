@@ -11,9 +11,16 @@ if ~isfield(tHData, template.figure.indpChan)
     return    
 end
 
-time = tHData.(template.figure.indpChan);
-fn   = fieldnames(tHData);
+%% Work on time channel that has string date format stuffs.
+if ~isempty(template.figure.str_dateTimeFormat)
+    % "aapl_history" date fomat MMM d yyyy
+    time = datetime(tHData.(template.figure.indpChan), ...
+                'InputFormat', template.figure.str_dateTimeFormat);
+else
+    time = tHData.(template.figure.indpChan);
+end
 
+fn = fieldnames(tHData);
 nVertLines = str2num(template.figure.str_verticalLines);
 
 %% Setup figure
@@ -115,7 +122,16 @@ for iax = 1:length(template.axis)
         end
 
         % --- Do math on data --- 
-        [depData, strLegTxt] = plotting.doMathOnOneLine(time, tHData.(strDepName), template.axis{iax}.line{iline} );
+        try
+            [depData, strLegTxt] = plotting.doMathOnOneLine(time, tHData.(strDepName), template.axis{iax}.line{iline} );
+        catch
+            uialert(hWindow, ...
+                {'Error while doing math.'; ...
+                sprintf('Issue on channel "%s" in axis "%s"', strDepName, template.axis{iax}.name)}, ...
+                'error', ...
+                "Icon","error");
+            continue
+        end
 
         % --- Plot data --- 
         [hLeg(end+1), strLeg{end+1}] = plotting.plotOneLine(time, depData, ...

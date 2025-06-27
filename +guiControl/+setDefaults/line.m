@@ -15,7 +15,6 @@ app.templates{itmp}.axis{iaxis}.line{iline}.b_yyaxisRight   = false;
 app.templates{itmp}.axis{iaxis}.line{iline}.b_integrate     = false;
 app.templates{itmp}.axis{iaxis}.line{iline}.b_differentiate = false;
 app.templates{itmp}.axis{iaxis}.line{iline}.b_biasToZero    = false;
-app.templates{itmp}.axis{iaxis}.line{iline}.b_inflectionPoints  = false; % tbd
 app.templates{itmp}.axis{iaxis}.line{iline}.b_applySmoothData   = false;
 app.templates{itmp}.axis{iaxis}.line{iline}.b_applyFilter   = false;
 

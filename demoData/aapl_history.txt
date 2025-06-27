@@ -1,4 +1,4 @@
-date open high low close adj close volume
+date, open, high, low, close, adj close, volume
 Jun 25 2025,  201.42, 203.66, 200.62, 201.56, 201.56, 39014815
 Jun 24 2025,  202.59, 203.44, 200.20, 200.30, 200.30, 54064000
 Jun 23 2025,  201.63, 202.30, 198.96, 201.50, 201.50, 55814300

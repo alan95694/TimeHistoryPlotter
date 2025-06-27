@@ -33,11 +33,12 @@ end
 
 %% Read file
 % Read CSV file into a table
+% T = readtable(file, ReadRowNames = true);
 T = readtable(file);
 
 % Convert table to structure (column-wise fields)
 S = table2struct(T, 'ToScalar', true);
-S.rowIndex = 1:height(T);
+S.rowIndex = (1:height(T))';
 
 %% Store data into app
 app.tHData.(NAME) = S;

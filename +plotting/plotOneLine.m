@@ -49,7 +49,11 @@ if (propLine.b_min) % data minimum
         'Marker','.', ...
         'MarkerSize', 15, ...
         'Color', hLine.Color);
-    tmp = sprintf('%0.5g @ %0.5g', vMn, indpData(iMn));
+    if isnumeric(indpData(iMn))
+        tmp = sprintf('%0.5g @ %0.5g', vMn, indpData(iMn));
+    else
+        tmp = sprintf('%0.5g @ %s', vMn, indpData(iMn)); % date & time
+    end
     text(indpData(iMn) + 0.015*diff(dx), vMn, tmp, ...
         'Color', hLine.Color);
 end
@@ -60,7 +64,11 @@ if (propLine.b_max) % data maximum
         'Marker','.', ...
         'MarkerSize', 15, ...
         'Color', hLine.Color);
-    tmp = sprintf('%0.5g @ %0.5g', vMx, indpData(iMx));
+    if isnumeric(indpData(iMx))
+        tmp = sprintf('%0.5g @ %0.5g', vMx, indpData(iMx));
+    else
+        tmp = sprintf('%0.5g @ %s', vMx, indpData(iMx)); % date & time
+    end
     text(indpData(iMx) + 0.015*diff(dx), vMx, tmp, ...
         'Color', hLine.Color);
 end
@@ -68,3 +76,17 @@ end
 
 end
 %% =======================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+

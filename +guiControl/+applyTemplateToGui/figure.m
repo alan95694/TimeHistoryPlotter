@@ -24,12 +24,14 @@ app.MinorGridCheckBox.Value = app.templates{itmp}.figure.b_minorGrid;
 app.LinkAxesCheckBox.Value  = app.templates{itmp}.figure.b_linkAxes;
 app.BoldCheckBox.Value      = app.templates{itmp}.figure.b_bold;
 app.logxCheckBox.Value      = app.templates{itmp}.figure.b_logx;
-app.FileNameinsgtitleCheckBox.Value = app.templates{itmp}.figure.b_fileNameInSgtitle;
+app.FileNameinsgtitleCheckBox.Value     = app.templates{itmp}.figure.b_fileNameInSgtitle;
+app.TemplateNameinsgtitleCheckBox.Value = app.templates{itmp}.figure.b_templateNameInSgtitle;
 
 % Strings
 app.sgtitleEditField.Value          = app.templates{itmp}.figure.str_sgtitle;
 app.VerticalLinesEditField.Value    = app.templates{itmp}.figure.str_verticalLines;
 app.PostxlabeltextEditField.Value   = app.templates{itmp}.figure.str_postXLabelText;
+app.DateTimeFormatEditField.Value   = app.templates{itmp}.figure.str_dateTimeFormat;
 
 % Numbers
 app.TimeMaxEditField.Value  = app.templates{itmp}.figure.num_timeMax;
@@ -44,6 +46,9 @@ guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ...
 
 guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ... 
     app.FigureSizeDropDown, app.templates{itmp}.figure.pd_figureSize);
+
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ... 
+    app.TextInterpreterDropDown, app.templates{itmp}.figure.pd_textInterp);
 
 end
 

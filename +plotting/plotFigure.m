@@ -30,13 +30,14 @@ clf('reset')
 reset(hFig); 
 drawnow
 
-% Figure size
+% Figure size & location
 if ~strcmp(template.figure.pd_figureSize, 'Dont change')
-    % To do, update so upper left does not move.
-    tmp = extractBefore(template.figure.pd_figureSize, '-');
-    tmp = str2num(tmp);
-    pos = hFig.Position;
-    hFig.Position = [pos(1), pos(2), tmp];
+    tmp         = extractBefore(template.figure.pd_figureSize, '-');
+    newSize     = str2num(tmp);
+    oldPos      = hFig.Position;
+    top         = oldPos(2) + oldPos(4);
+    newBottom   = top - newSize(2);    
+    hFig.Position = [oldPos(1), newBottom, newSize(1), newSize(2)];
 end
 
 

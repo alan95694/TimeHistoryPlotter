@@ -20,7 +20,6 @@ tmpLoaded = tmpLoaded.templates;
 
 %%  Put loaded templates into gui
 
-% ToDo: pull downs, check loaded value is in field
 itmpApp = length(app.PlottingTemplatesListBox.Items);
 for itmp = 1:length(tmpLoaded)
     itmpApp = itmpApp + 1;

@@ -1,0 +1,25 @@
+
+
+Notes on what to do
+
+--- data loading --- 
+time format
+
+
+--- Bug fix or must do --- 
+Specify time format - plot in time formats
+Add tooltips
+figure size - keep upper left in same spot when resizing
+
+
+--- Features to add ---
+in Axis List list box, specify how many lines are axis
+bold
+move axis list items up and down
+change "input" to popup in front of gui (?)
+
+lines
+    add errorbar and rate limiter
+    move lines up and down, add copy options
+    multi channel add
+    inflection points (?)

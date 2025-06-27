@@ -36,9 +36,14 @@ app.TimeMaxEditField.Value  = app.templates{itmp}.figure.num_timeMax;
 app.TimeMinEditField.Value  = app.templates{itmp}.figure.num_timeMin;
 
 % Pull down
-app.TileSpaceDropDown.Value     = app.templates{itmp}.figure.pd_TileSpace;
-app.FigureNumDropDown.Value     = app.templates{itmp}.figure.pd_figure;
-app.FigureSizeDropDown.Value    = app.templates{itmp}.figure.pd_figureSize;
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ...
+    app.TileSpaceDropDown, app.templates{itmp}.figure.pd_TileSpace);
+
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ... 
+    app.FigureNumDropDown, app.templates{itmp}.figure.pd_figure);
+
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ... 
+    app.FigureSizeDropDown, app.templates{itmp}.figure.pd_figureSize);
 
 end
 

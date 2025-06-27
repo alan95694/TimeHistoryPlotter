@@ -19,8 +19,7 @@ app.yminEditField.Value     = app.templates{itmp}.axis{iaxis}.num_ymin;
 app.ymaxEditField.Value     = app.templates{itmp}.axis{iaxis}.num_ymax;
 
 % pull down
-app.LegendLocationDropDown.Value = app.templates{itmp}.axis{iaxis}.pd_legendLocation;
-
-
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ...
+    app.LegendLocationDropDown, app.templates{itmp}.axis{iaxis}.pd_legendLocation);
 
 end

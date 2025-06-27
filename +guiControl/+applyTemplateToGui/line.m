@@ -26,11 +26,23 @@ app.FilteraLineEditField.Value  = app.templates{itmp}.axis{iaxis}.line{iline}.st
 app.FilterbLineEditField.Value  = app.templates{itmp}.axis{iaxis}.line{iline}.str_filterB;
 
 % pull down
-app.ColorDropDown.Value         = app.templates{itmp}.axis{iaxis}.line{iline}.pd_color;
-app.LineWidthDropDown.Value     = app.templates{itmp}.axis{iaxis}.line{iline}.pd_lineWidth;
-app.MarkerDropDown.Value        = app.templates{itmp}.axis{iaxis}.line{iline}.pd_marker;
-app.StyleDropDown.Value         = app.templates{itmp}.axis{iaxis}.line{iline}.pd_style;
-app.MethodLineDropDown.Value    = app.templates{itmp}.axis{iaxis}.line{iline}.pd_sdMethod;
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ...
+    app.ColorDropDown, app.templates{itmp}.axis{iaxis}.line{iline}.pd_color);
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ...
+    app.LineWidthDropDown, app.templates{itmp}.axis{iaxis}.line{iline}.pd_lineWidth);
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ...
+    app.MarkerDropDown, app.templates{itmp}.axis{iaxis}.line{iline}.pd_marker);
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ...
+    app.StyleDropDown, app.templates{itmp}.axis{iaxis}.line{iline}.pd_style);
+guiControl.applyTemplateToGui.applyTemplateToGuiPullDown( ...
+    app.MethodLineDropDown, app.templates{itmp}.axis{iaxis}.line{iline}.pd_sdMethod);
+
+
+
+
+
+
+
 
 
 end

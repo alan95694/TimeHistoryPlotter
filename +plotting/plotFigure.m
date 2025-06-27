@@ -1,7 +1,9 @@
-function plotFigure(template, tHData, hWindow, strDataFileName)
+function [bMissingData] = plotFigure(template, tHData, hWindow, strDataFileName)
 % 
 % 
 % 
+
+bMissingData = false;
 
 %% Gather things
 if ~isfield(tHData, template.figure.indpChan)
@@ -18,6 +20,7 @@ nVertLines = str2num(template.figure.str_verticalLines);
 switch template.figure.pd_figure
     case ("gcf")
         hFig = gcf; 
+        figure(hFig); % Force into windows focus
     case ("figure")
         hFig = figure; 
     otherwise   
@@ -107,6 +110,7 @@ for iax = 1:length(template.axis)
         if isempty(strDepName)
             % Name not in data set
             fprintf('"%s" not found in data set. \n', template.axis{iax}.line{iline}.name);
+            bMissingData = true;
             continue
         end
 

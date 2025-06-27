@@ -22,9 +22,45 @@ curTemplate = app.templates{itmp};
 curTHData   = app.tHData.(app.LoadedFilesListBox.Value);
 
 %% Make the plot
-hWindow = app.TimeHistoryPlotterUIFigure;
-plotting.plotFigure(curTemplate, curTHData, hWindow, app.LoadedFilesListBox.Value)
+
+disp(' ')
+fprintf('Plotting file: "%s", with template: "%s"\n', app.LoadedFilesListBox.Value, curTemplate.name);
+
+hwb = uiprogressdlg(app.TimeHistoryPlotterUIFigure, ...
+        'Title', 'Please Wait',...
+        'Message', 'Plotting, please wait');
+drawnow
+
+[bMissingData] = plotting.plotFigure(curTemplate, curTHData, ...
+        app.TimeHistoryPlotterUIFigure, app.LoadedFilesListBox.Value);
+
+hwb.Value = 1.0; 
+drawnow
+delete(hwb)
+
+if (bMissingData)
+    uialert(app.TimeHistoryPlotterUIFigure, ...
+        {'One or more data channels not found in data set.'; ...
+        'See Command Window for details'}, ...
+        'warning', ...
+        "Icon","warning");
+end
 
 
 end
 %% =======================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

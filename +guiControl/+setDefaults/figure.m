@@ -10,7 +10,7 @@ app.templates{itmp}.figure.indpChan     = '<null>';
 app.templates{itmp}.figure.b_majorGrid  = true;
 app.templates{itmp}.figure.b_minorGrid  = true;
 app.templates{itmp}.figure.b_linkAxes   = false;
-app.templates{itmp}.figure.b_bold       = false; % TBD, not yet coded
+app.templates{itmp}.figure.b_bold       = false;
 app.templates{itmp}.figure.b_logx       = false;
 app.templates{itmp}.figure.b_fileNameInSgtitle  = true;
 

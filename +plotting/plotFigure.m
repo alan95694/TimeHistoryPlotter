@@ -170,7 +170,7 @@ for iax = 1:length(template.axis)
 
 
     % --- Legends and x/y labels --- 
-    if ~isempty(hLeg)
+    if ~isempty(hLeg) && ~strcmp(template.axis{iax}.pd_legendLocation, 'none')
         hLeg = legend(hLeg, strLeg, 'Interpreter', 'none', ...
             'location', template.axis{iax}.pd_legendLocation);
         if ~isempty(template.axis{iax}.str_legendTitle)
@@ -216,9 +216,13 @@ if (template.figure.b_fileNameInSgtitle)
     end
     sgtitle(foo, 'Interpreter', 'none');
 else
-    sgtitle(template.figure.str_sgtitle, 'Interpreter', 'none')
+    sgtitle(template.figure.str_sgtitle, 'Interpreter', 'none');
 end
 
+if (template.figure.b_bold)
+    % Make all text bold and bigger, lines more think
+    plotting.makeBold(hFig);
+end
 
 
 end

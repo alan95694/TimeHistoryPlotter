@@ -5,10 +5,6 @@ function onStartUp(app)
 % 
 
 
-app.LoadedFilesListBox.Items    = {''};
-app.DataChannelsListBox.Items   = {''};
-
-
 %% Make a default template
 guiControl.makeNewTemplate(app);
 

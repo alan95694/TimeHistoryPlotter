@@ -55,7 +55,7 @@ else
 end
 app.LoadedFilesListBox.Value = NAME;
 
-guiControl.listBoxSelectedChanged.loadedFiles(app);
+guiControl.listBoxLoadedFilesChanged(app);
 
 
 

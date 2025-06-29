@@ -4,65 +4,40 @@ function makeNewAxis(app)
 % 
 
 
-%% Save gui to template
-itmp    = guiControl.getCurrentTemplateNumber(app);
-iaxis   = guiControl.getCurrentAxisNumber(app);
-iline   = guiControl.getCurrentDataChannelinCurrentAxisNumber(app);
-guiControl.saveGuiToTemplate.all(app, itmp, iaxis, iline);
-
-
-
-%% Get new unique name
-nn = iaxis+1;
-strRootName = 'Axis ';
-while (true)
-    strTestNewName = [strRootName, num2str(nn)];
-    if ~any(contains(app.AxisListListBox.Items, strTestNewName))
-        break
-    end
-    nn = nn + 1;
+% Get selected template
+[itmp] = guiControl.getNodeLocation(app, app.TmpTree.SelectedNodes);
+if isempty(itmp)
+    return
 end
 
-
-%% Setup template with defaults
-iaxis = length(app.templates{itmp}.axis) + 1;
-
-% axis properties
-guiControl.setDefaults.axis(app, itmp, iaxis, strTestNewName);
+%% Put new things into data structure
+iaxNew   = length(app.templates{itmp}.axis) + 1;
+ilineNew = 1;
+% First axis properties
+guiControl.setDefaults.axis(app, itmp, iaxNew, sprintf('Axis %d', iaxNew) );
 
 % Declare first line
-guiControl.setDefaults.line(app, itmp, iaxis, 1, '<null>');
+guiControl.setDefaults.line(app, itmp, iaxNew, ilineNew, '<null>');
 
+%% Add Axis nodes
 
-%% Update gui
-app.AxisListListBox.Items{end+1} = strTestNewName;
-app.AxisListListBox.Value  = strTestNewName;
+% Make new axis node
+app.templates{itmp}.axis{iaxNew}.hNode = uitreenode(...
+    app.templates{itmp}.hNode, ...
+    'Text', app.templates{itmp}.axis{iaxNew}.name);
 
-app.CurrentAxisListBox.Value = app.CurrentAxisListBox.Items{1};
+app.templates{itmp}.axis{iaxNew}.hNode.NodeData.type   = 'axis';
 
-% Update Axis Properties and Line Properties gui
-iaxisLast = [];
-guiControl.listBoxSelectedChanged.axis(app, itmp, iaxisLast, iaxis);
+iline = 1;
+app.templates{itmp}.axis{iaxNew}.line{iline}.hNode = ...
+    uitreenode(app.templates{itmp}.axis{iaxNew}.hNode, ...
+        'Text', app.templates{itmp}.axis{iaxNew}.line{iline}.name);
 
+app.templates{itmp}.axis{iaxNew}.line{iline}.hNode.NodeData.type   = 'line';
+
+%% Expand tree
+expand(app.templates{itmp}.axis{iaxNew}.hNode.Parent, 'all')
+app.TmpTree.SelectedNodes = app.templates{itmp}.axis{iaxNew}.hNode;
 
 end
 %% =======================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

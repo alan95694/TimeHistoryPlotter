@@ -4,24 +4,33 @@ function deleteTemplate(app)
 % 
 
 
-itmpCur = guiControl.getCurrentTemplateNumber(app); 
 
-
-if (length(app.templates) == 1)
-    % Remove current and make a new default template
-    app.templates(1) = [];
-    app.PlottingTemplatesListBox.Items = {};
-
-    guiControl.makeNewTemplate(app, true);
-else
-    % Remove current and switch to first template
-    app.templates(itmpCur) = [];
-
-    app.PlottingTemplatesListBox.Items(itmpCur) = [];
-    app.PlottingTemplatesListBox.Value = app.PlottingTemplatesListBox.Items{1};
-
-    guiControl.listBoxSelectedChanged.templates(app, []);
+% Get selected template
+[itmp] = guiControl.getNodeLocation(app, app.TmpTree.SelectedNodes);
+if isempty(itmp)
+    return
 end
+
+%% Delete template data and tree node
+delete( app.templates{itmp}.hNode )
+app.templates(itmp) = [];
+
+if isempty(app.templates)
+    guiControl.makeNewTemplate(app);
+end
+
+
 
 end
 %% =======================================================================================
+
+
+
+
+
+
+
+
+
+
+

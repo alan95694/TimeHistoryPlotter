@@ -1,46 +1,19 @@
-function makeNewTemplate(app, makeDefault)
+function makeNewTemplate(app)
 % 
 % 
 % 
 
-if ~makeDefault
-    %% Save gui to template
-    itmp    = guiControl.getCurrentTemplateNumber(app);
-    iaxis   = guiControl.getCurrentAxisNumber(app);
-    iline   = guiControl.getCurrentDataChannelinCurrentAxisNumber(app);
-    guiControl.saveGuiToTemplate.all(app, itmp, iaxis, iline);
-end
 
 
-%% Get new unique name
-if makeDefault
-    strTestNewName = 'template 1';
-else
-    nn = 1;
-    strRootName = 'template ';
-
-    % while (true)
-    %     strTestNewName = [strRootName, num2str(nn)];
-    %     if ~any(contains(app.PlottingTemplatesListBox.Items, strTestNewName))
-    %         break
-    %     end
-    %     nn = nn + 1;
-    % end
-    strTestNewName = guiControl.makeNewUniqueNameListBox(nn, ...
-            strRootName, app.PlottingTemplatesListBox.Items);
-end
 
 %% Setup template with defaults
 
 if isempty(app.templates)
     itmp = 1;
-    app.templates{itmp}.name = strTestNewName;
 else
     itmp = length(app.templates) + 1;
-    app.templates{itmp}.name = strTestNewName;
 end
-
-
+app.templates{itmp}.name = 'template';
 
 % Figure level properties
 guiControl.setDefaults.figure(app, itmp);
@@ -51,26 +24,34 @@ guiControl.setDefaults.axis(app, itmp, 1, 'Axis 1');
 % Declare first line
 guiControl.setDefaults.line(app, itmp, 1, 1, '<null>');
 
-
-%% Update gui
-
-if makeDefault % isempty(app.PlottingTemplatesListBox.Items{1})
-    app.PlottingTemplatesListBox.Items{1}   = app.templates{itmp}.name;
-    app.PlottingTemplatesListBox.Value      = app.templates{itmp}.name;
-else
-    app.PlottingTemplatesListBox.Items{end+1} = app.templates{itmp}.name;
-    app.PlottingTemplatesListBox.Value  = app.templates{itmp}.name;
-end
+%% Add a template to the uitree
 
 
-%% Update Gui
-guiControl.listBoxSelectedChanged.templates(app, []);
+% Make new template node
+app.templates{itmp}.hNode = uitreenode(app.TmpTree, ...
+        'Text', app.templates{itmp}.name);
 
+app.templates{itmp}.hNode.NodeData.type  = 'tmp';
 
+% Add Axis nodes
+iax = 1;
+% Make new axis node
+app.templates{itmp}.axis{iax}.hNode = uitreenode(...
+    app.templates{itmp}.hNode, ...
+    'Text', app.templates{itmp}.axis{iax}.name);
 
+app.templates{itmp}.axis{iax}.hNode.NodeData.type   = 'axis';
 
+iline = 1;
+app.templates{itmp}.axis{iax}.line{iline}.hNode = ...
+    uitreenode(app.templates{itmp}.axis{iax}.hNode, ...
+        'Text', app.templates{itmp}.axis{iax}.line{iline}.name);
 
+app.templates{itmp}.axis{iax}.line{iline}.hNode.NodeData.type   = 'line';
 
+% Make new template the selected one
+app.TmpTree.SelectedNodes = app.templates{itmp}.hNode;
+expand(app.templates{itmp}.hNode, 'all')
 
 end
 %% =======================================================================================

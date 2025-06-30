@@ -21,11 +21,9 @@ if (length(app.templates{itmp}.axis) == 1)
 
     app.templates{itmp}.axis(1) = []; % delete
 
-    % First axis properties
-    guiControl.setDefaults.axis(app, itmp, 1, 'Axis 1');
-
-    % Declare first line
-    guiControl.setDefaults.line(app, itmp, 1, 1, '<null>');
+    % Make default axis into empty template
+    app.TmpTree.SelectedNodes = app.templates{itmp}.hNode;
+    guiControl.makeNewAxis(app);
 
 else
     app.templates{itmp}.axis(iax) = [];

@@ -29,6 +29,7 @@ switch hNode.NodeData.type
 end
 
 
+
 end
 %% =======================================================================================
 function itmp = find_itmp(app, hNode)
@@ -51,7 +52,7 @@ end
 
 end
 %% =======================================================================================
-function iax = find_iline(app, hNode, itmp, iax)
+function iline = find_iline(app, hNode, itmp, iax)
 
 for iline = 1:length(app.templates{itmp}.axis{iax}.line)
     if isequal(hNode, app.templates{itmp}.axis{iax}.line{iline}.hNode)

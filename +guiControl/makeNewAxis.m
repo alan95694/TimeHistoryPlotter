@@ -39,5 +39,7 @@ app.templates{itmp}.axis{iaxNew}.line{iline}.hNode.NodeData.type   = 'line';
 expand(app.templates{itmp}.axis{iaxNew}.hNode, 'all')
 app.TmpTree.SelectedNodes = app.templates{itmp}.axis{iaxNew}.hNode;
 
+
+
 end
 %% =======================================================================================

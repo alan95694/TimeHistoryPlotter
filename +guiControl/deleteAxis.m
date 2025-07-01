@@ -16,11 +16,16 @@ end
 % Delete from tree
 delete(hh.ax)
 
+app.TmpTree.SelectedNodes = hh.tmp;
+
 if isempty(hh.tmp.Children)
     % Make new axis if only axis were deleted
-    app.TmpTree.SelectedNodes = hh.tmp;
     guiControl.makeNewAxis(app);
+else
+    % Update check boxes and stuff
+    guiControl.treeSelectionChanged(app, app.TmpTree.SelectedNodes , []);
 end
+
 
 
 end

@@ -1,7 +1,9 @@
-function axis(app, curNode)
+function treeNodeToGui(app, curNode)
 % 
 % 
 % 
+
+
 
 
 for fn = fieldnames(curNode.NodeData)'

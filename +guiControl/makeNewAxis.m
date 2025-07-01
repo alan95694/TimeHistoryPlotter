@@ -4,13 +4,12 @@ function makeNewAxis(app)
 % 
 
 
-% Get selected template
-[hh] = guiControl.getNodeLocation(app, app.TmpTree.SelectedNodes);
 
-% Get selected template
-if isempty(hh.tmp)
-    return
+%% Save where we are at
+if ~isempty(app.TmpTree.SelectedNodes)
+    hh = guiControl.guiTreeNodeCom.saveAllGuiToNode(app, app.TmpTree.SelectedNodes);
 end
+
 
 %% Add Axis nodes
 % --- new axis node --- 
@@ -18,8 +17,9 @@ axisNode = uitreenode(hh.tmp, ...
         'Text', 'Axis', ...
         'tag', 'axis');
 
+app.TmpTree.SelectedNodes = axisNode;
 guiControl.setDefaults.axis(app, axisNode);
-guiControl.nodeDataToGui.axis(app, axisNode);
+guiControl.guiTreeNodeCom.treeNodeToGui(app, axisNode);
 
 % --- new line node --- 
 lineNode = uitreenode(axisNode, ...
@@ -27,13 +27,14 @@ lineNode = uitreenode(axisNode, ...
         'tag', 'line');
 
 guiControl.setDefaults.line(app, lineNode);
-guiControl.nodeDataToGui.line(app, lineNode);
+guiControl.guiTreeNodeCom.treeNodeToGui(app, lineNode);
 
 %% Expand tree
 expand(axisNode)
-app.TmpTree.SelectedNodes = axisNode;
 
-
+%% Update visibility
+app.AxisPropertiesPanel.Enable = true;
+app.LinePropertiesPanel.Enable = true;
 
 end
 %% =======================================================================================

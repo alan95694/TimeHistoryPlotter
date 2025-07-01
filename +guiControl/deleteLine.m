@@ -17,10 +17,15 @@ end
 % Delete from tree
 delete( hh.line )
 
+
+app.TmpTree.SelectedNodes = hh.ax;
+
 if isempty(hh.ax.Children)
     % Make new line if only line were deleted
-    app.TmpTree.SelectedNodes = hh.ax;
     guiControl.makeNewLine(app);
+else
+    % Update check boxes and stuff
+    guiControl.treeSelectionChanged(app, app.TmpTree.SelectedNodes , []);
 end
 
 

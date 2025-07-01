@@ -3,19 +3,18 @@ function deleteTemplate(app)
 % 
 % 
 
-
+[hh] = guiControl.getNodeLocation(app, app.TmpTree.SelectedNodes);
 
 % Get selected template
-[itmp] = guiControl.getNodeLocation(app, app.TmpTree.SelectedNodes);
-if isempty(itmp)
+if isempty(hh.tmp)
     return
 end
 
 %% Delete template data and tree node
-delete( app.templates{itmp}.hNode )
-app.templates(itmp) = [];
+delete( hh.tmp )
 
-if isempty(app.templates)
+
+if isempty(app.TmpTree.Children)
     guiControl.makeNewTemplate(app);
 end
 

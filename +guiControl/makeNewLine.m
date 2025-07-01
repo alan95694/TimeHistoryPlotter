@@ -4,38 +4,28 @@ function makeNewLine(app)
 % 
 
 
-% Get selected template
-[itmp, iax, iline] = guiControl.getNodeLocation(app, app.TmpTree.SelectedNodes);
-if isempty(itmp)
+% Get selected axis
+[hh] = guiControl.getNodeLocation(app, app.TmpTree.SelectedNodes);
+
+% Get selected axis
+if isempty(hh.ax)
     return
 end
 
-%% Put new things into data structure
-if isnan(iax)
-    % assume first axis
-    iax = 1;
-end
-
-if isnan(iline)
-    ilineNew = length(app.templates{itmp}.axis{iax}.line) + 1;
-else
-    ilineNew = iline + 1;
-end
-
-% Declare first line
-guiControl.setDefaults.line(app, itmp, iax, ilineNew, '<null>');
 
 
-%% Add line nodes
-app.templates{itmp}.axis{iax}.line{ilineNew}.hNode = ...
-    uitreenode(app.templates{itmp}.axis{iax}.hNode, ...
-        'Text', app.templates{itmp}.axis{iax}.line{ilineNew}.name);
+%% Add line node
 
-app.templates{itmp}.axis{iax}.line{ilineNew}.hNode.NodeData.type   = 'line';
+% --- new line node --- 
+lineNode = uitreenode(hh.ax, ...
+        'Text', '<line>', ...
+        'tag', 'line');
+
+guiControl.setDefaults.line(app, lineNode);
+guiControl.nodeDataToGui.line(app, lineNode);
 
 %% Expand tree
-expand(app.templates{itmp}.axis{iax}.hNode, 'all')
-app.TmpTree.SelectedNodes = app.templates{itmp}.axis{iax}.line{ilineNew}.hNode;
+% not sure we need anything here?
 
 
 end

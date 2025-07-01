@@ -1,33 +1,41 @@
-function [itmp, iax, iline] = getNodeLocation(app, hNode)
+function [hh, ii] = getNodeLocation(app, hNode)
 % 
 %
 % 
 
 
-itmp    = nan;
-iax     = nan;
-iline   = nan;
+% ii.itmp    = nan;
+% ii.iax     = nan;
+% ii.iline   = nan;
 
-if isempty(hNode)
+hh.tmp  = [];
+hh.ax   = [];
+hh.line = [];
+
+if isempty(hNode) || ~isvalid(hNode)
     return
 end
 
-
-switch hNode.NodeData.type
+switch hNode.Tag
     case {'tmp'}
-        itmp = find_itmp(app, hNode);
+        hh.tmp  = hNode;
+        % itmp    = find_itmp(app, hNode);
         return
     case {'axis'}
-        itmp = find_itmp(app, hNode.Parent);
-        iax  = find_iax(app, hNode, itmp);
+        hh.tmp  = hNode.Parent;
+        hh.ax   = hNode;
+        % itmp = find_itmp(app, hNode.Parent);
+        % iax  = find_iax(app, hNode, itmp);
         return
     case {'line'}
-        itmp    = find_itmp(app, hNode.Parent.Parent);
-        iax     = find_iax(app, hNode.Parent, itmp);
-        iline   = find_iline(app, hNode, itmp, iax);
+        hh.tmp  = hNode.Parent.Parent;
+        hh.ax   = hNode.Parent;
+        hh.line = hNode;
+        % itmp    = find_itmp(app, hNode.Parent.Parent);
+        % iax     = find_iax(app, hNode.Parent, itmp);
+        % iline   = find_iline(app, hNode, itmp, iax);
         return
 end
-
 
 
 end

@@ -4,32 +4,23 @@ function deleteAxis(app)
 % 
 
 
-% Get what templates have a selection 
-[itmp, iax] = guiControl.getNodeLocation(app, app.TmpTree.SelectedNodes);
-if (isempty(itmp) || isnan(iax))
+[hh] = guiControl.getNodeLocation(app, app.TmpTree.SelectedNodes);
+
+% Get selected template
+if isempty(hh.ax)
     return
 end
 
 %% Delete selected axes
 
 % Delete from tree
-delete(app.templates{itmp}.axis{iax}.hNode)
+delete(hh.ax)
 
-% Remove from data structure
-if (length(app.templates{itmp}.axis) == 1)
-    % Reset to default if axis is only one in template
-
-    app.templates{itmp}.axis(1) = []; % delete
-
-    % Make default axis into empty template
-    app.TmpTree.SelectedNodes = app.templates{itmp}.hNode;
+if isempty(hh.tmp.Children)
+    % Make new axis if only axis were deleted
+    app.TmpTree.SelectedNodes = hh.tmp;
     guiControl.makeNewAxis(app);
-
-else
-    app.templates{itmp}.axis(iax) = [];
 end
-   
-
 
 
 end

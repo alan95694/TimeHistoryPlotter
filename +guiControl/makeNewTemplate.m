@@ -1,4 +1,4 @@
-function makeNewTemplate(app)
+function tmpNode = makeNewTemplate(app)
 % 
 % 
 % 

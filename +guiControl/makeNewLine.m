@@ -1,4 +1,4 @@
-function makeNewLine(app)
+function hLineNode = makeNewLine(app)
 % 
 % 
 % 
@@ -14,13 +14,13 @@ end
 %% Add line node
 
 % --- new line node --- 
-lineNode = uitreenode(hh.ax, ...
+hLineNode = uitreenode(hh.ax, ...
         'Text', '<null>', ...
         'tag', 'line');
 
-app.TmpTree.SelectedNodes = lineNode;
-guiControl.setDefaults.line(app, lineNode);
-guiControl.guiTreeNodeCom.treeNodeToGui(app, lineNode);
+app.TmpTree.SelectedNodes = hLineNode;
+guiControl.setDefaults.line(app, hLineNode);
+guiControl.guiTreeNodeCom.treeNodeToGui(app, hLineNode);
 
 %% Expand tree
 % not sure we need anything here?

@@ -1,4 +1,4 @@
-function makeNewAxis(app)
+function hAxisNode = makeNewAxis(app)
 % 
 % 
 % 
@@ -13,24 +13,24 @@ end
 
 %% Add Axis nodes
 % --- new axis node --- 
-axisNode = uitreenode(hh.tmp, ...
+hAxisNode = uitreenode(hh.tmp, ...
         'Text', 'Axis', ...
         'tag', 'axis');
 
-app.TmpTree.SelectedNodes = axisNode;
-guiControl.setDefaults.axis(app, axisNode);
-guiControl.guiTreeNodeCom.treeNodeToGui(app, axisNode);
+app.TmpTree.SelectedNodes = hAxisNode;
+guiControl.setDefaults.axis(app, hAxisNode);
+guiControl.guiTreeNodeCom.treeNodeToGui(app, hAxisNode);
 
 % --- new line node --- 
-lineNode = uitreenode(axisNode, ...
-        'Text', '<line>', ...
+lineNode = uitreenode(hAxisNode, ...
+        'Text', '<null>', ...
         'tag', 'line');
 
 guiControl.setDefaults.line(app, lineNode);
 guiControl.guiTreeNodeCom.treeNodeToGui(app, lineNode);
 
 %% Expand tree
-expand(axisNode)
+expand(hAxisNode)
 
 %% Update visibility
 app.AxisPropertiesPanel.Enable = true;

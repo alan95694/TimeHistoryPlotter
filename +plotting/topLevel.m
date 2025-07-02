@@ -3,22 +3,21 @@ function topLevel(app)
 % 
 % 
 
-if isempty(app.tHData) || length(fieldnames(app.tHData)) == 0
+if isempty(app.tHData) || isempty(fieldnames(app.tHData))
     uialert(app.TimeHistoryPlotterUIFigure, ...
         'No time history data loaded.', 'Error');
     return
 end
 
-% What are we looking at
-itmp    = guiControl.getCurrentTemplateNumber(app);
-iaxis   = guiControl.getCurrentAxisNumber(app);
-iline   = guiControl.getCurrentDataChannelinCurrentAxisNumber(app);
+
 
 %% Save gui into template
-guiControl.saveGuiToTemplate.all(app, itmp, iaxis, iline);
+guiControl.guiTreeNodeCom.saveAllGuiToNode(app, app.TmpTree.SelectedNodes);
+
 
 %% Gather data
-curTemplate = app.templates{itmp};
+optDisp = false;
+curTemplate = guiControl.gatherTemplateIntoStruct(app, optDisp);
 curTHData   = app.tHData.(...
             matlab.lang.makeValidName(app.LoadedFilesListBox.Value));
 

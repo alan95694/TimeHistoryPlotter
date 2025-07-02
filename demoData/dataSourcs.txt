@@ -2,3 +2,4 @@ https://people.math.sc.edu/Burkardt/datasets/csv/csv.html
 
 https://data.open-power-system-data.org/time_series/
 
+https://github.com/xuhao1/pyAircraftIden/tree/master/data

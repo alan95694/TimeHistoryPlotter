@@ -199,8 +199,10 @@ for iax = 1:length(template.axis)
                 'Interpreter', template.figure.pd_textInterp);
         end
     end
-    ylabel(template.axis{iax}.name, 'Interpreter', template.figure.pd_textInterp, ...
-        'FontSize', 12);
+    if (template.axis{iax}.b_AxisNameYLabel)
+        ylabel(template.axis{iax}.name, 'Interpreter', template.figure.pd_textInterp, ...
+            'FontSize', 12);
+    end
 end
 
 %% Post Plotting formatting

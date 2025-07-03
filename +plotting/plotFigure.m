@@ -229,16 +229,33 @@ if (template.figure.b_linkAxes)
     linkaxes(hTile)
 end
 
-if (template.figure.b_fileNameInSgtitle)
+
+% template.figure.str_sgtitle           user input
+% template.figure.b_fileNameInSgtitle   bool include data file name "strDataFileName"
+% template.figure.b_templateNameInSgt   bool include template name
+if isempty(template.figure.str_sgtitle) && ~template.figure.b_fileNameInSgtitle && ~template.figure.b_templateNameInSgt
+    % No sgtitle
+else
+    % format
+    %   template.figure.str_sgtitle
+    %   <file name>, <template name>
+
     if isempty(template.figure.str_sgtitle)
-        foo = {strDataFileName};
+        foo = {};
     else
-        foo = {template.figure.str_sgtitle; strDataFileName};
+        foo = {template.figure.str_sgtitle};
+    end
+
+    if template.figure.b_fileNameInSgtitle && ~template.figure.b_templateNameInSgt
+        foo{end+1} = strDataFileName;
+    elseif ~template.figure.b_fileNameInSgtitle && template.figure.b_templateNameInSgt
+        foo{end+1} = template.name;
+    elseif template.figure.b_fileNameInSgtitle && template.figure.b_templateNameInSgt
+        foo{end+1} = [strDataFileName , ', ', template.name];
     end
     sgtitle(foo, 'Interpreter', 'none');
-else
-    sgtitle(template.figure.str_sgtitle, 'Interpreter', 'none');
 end
+
 
 if (template.figure.b_bold)
     % Make all text bold and bigger, lines more think

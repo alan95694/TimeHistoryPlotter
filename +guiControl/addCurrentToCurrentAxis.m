@@ -40,7 +40,7 @@ for ii = 1:length(strDataChan)
         elseif (~optOverWrite)
             % Make new line, put data channel on to it
             hNewLine = guiControl.makeNewLine(app);
-            hNewLine.Text = strDataChan{1};
+            hNewLine.Text = strDataChan{ii};
         end
     else
         hLineNode = guiControl.makeNewLine(app);

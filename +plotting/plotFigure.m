@@ -184,7 +184,7 @@ for iax = 1:length(template.axis)
         dy(2) = template.axis{iax}.num_ymax;        
     end
     if ~isequal(ylim, dy)
-        try, ylim(dy)
+        try ylim(dy)
         catch, warning('Invalid ylim specified.'), end
     end
 
@@ -195,17 +195,18 @@ for iax = 1:length(template.axis)
             'location', template.axis{iax}.pd_legendLocation, ...
             'fontsize', 9);
         if ~isempty(template.axis{iax}.str_legendTitle)
-            title(hLeg, template.axis{iax}.str_legendTitle);
+            title(hLeg, template.axis{iax}.str_legendTitle, ...
+                'Interpreter', template.figure.pd_textInterp);
         end
     end
-    ylabel(template.axis{iax}.name, 'Interpreter', 'none', ...
+    ylabel(template.axis{iax}.name, 'Interpreter', template.figure.pd_textInterp, ...
         'FontSize', 12);
 end
 
 %% Post Plotting formatting
 
 strXLabel = sprintf('%s %s', template.figure.indpChan, template.figure.str_postXLabelText);
-xlabel(strXLabel, 'Interpreter', 'none', ...
+xlabel(strXLabel, 'Interpreter', template.figure.pd_textInterp, ...
     'FontSize', 12);
 
 % Apply time ranges
@@ -253,7 +254,7 @@ else
     elseif template.figure.b_fileNameInSgtitle && template.figure.b_templateNameInSgt
         foo{end+1} = [strDataFileName , ', ', template.name];
     end
-    sgtitle(foo, 'Interpreter', 'none');
+    sgtitle(foo, 'Interpreter', template.figure.pd_textInterp);
 end
 
 

@@ -38,6 +38,7 @@ if ~isequal(propLine.pd_marker, "none")
     hLine.Marker = propLine.pd_marker;
 end
 hLine.LineStyle = propLine.pd_style;
+hLine.MarkerSize = str2double(propLine.pd_markerSize);
 
 dx = xlim;
 dy = ylim;

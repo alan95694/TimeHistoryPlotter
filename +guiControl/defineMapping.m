@@ -73,7 +73,7 @@ doTheThing(app, 'line', 'LineWidthDropDown',    'pd_lineWidth', 'dd', '0.5');
 doTheThing(app, 'line', 'MarkerDropDown',       'pd_marker',    'dd', 'none');
 doTheThing(app, 'line', 'StyleDropDown',        'pd_style',     'dd', '-');
 doTheThing(app, 'line', 'MethodLineDropDown',   'pd_sdMethod',  'dd', 'movmean');
-
+doTheThing(app, 'line', 'MarkerSizeDropDown',    'pd_markerSize', 'dd', '6');
 
 end
 %% =======================================================================================

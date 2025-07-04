@@ -24,8 +24,6 @@ end
 
 %% Put content of file into new templates
 
-warning('Think more about the time channel.')
-
 for iTmp = 1:length(loadedTemplates)
 
     % Make new template to put loaded template(s) into
@@ -77,9 +75,6 @@ for iTmp = 1:length(loadedTemplates)
         end
     end
 end
-
-
-
 
 
 end

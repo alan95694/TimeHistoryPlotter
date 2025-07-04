@@ -10,7 +10,7 @@ end
 pause(0.1)
 
 %% Save gui data into NodeData
-guiControl.guiTreeNodeCom.saveAllGuiToNode(app, app.TmpTree.SelectedNodes)
+guiControl.guiTreeNodeCom.saveAllGuiToNode(app, app.TmpTree.SelectedNodes);
 
 %% Survey all templates
 templates   = [];

@@ -13,14 +13,15 @@ end
 
 
 % Find match (case-sensitive)
-match = strcmp(app.LoadedFilesListBox.Items, app.LoadedFilesListBox.Value);
+strDeleteMe = app.LoadedFilesListBox.Value;
+match = strcmp(app.LoadedFilesListBox.Items, strDeleteMe);
 
 % Remove first match only
 idx = find(match, 1);  % find index of first match
 if ~isempty(idx)
     app.LoadedFilesListBox.Items(idx) = [];  % remove it
 
-    app.tHData = rmfield(app.tHData, app.LoadedFilesListBox.Value);
+    app.tHData = rmfield(app.tHData, strDeleteMe);
 else
     error('did not find the thing.')
 end

@@ -1,4 +1,4 @@
-function template = gatherTemplateIntoStruct(app, optDisp)
+function [template, templates] = gatherTemplateIntoStruct(app, optDisp)
 % 
 % 
 % 
@@ -9,10 +9,12 @@ if (optDisp)
 end
 pause(0.1)
 
-templates  = [];
-names   = [];
+%% Save gui data into NodeData
+guiControl.guiTreeNodeCom.saveAllGuiToNode(app, app.TmpTree.SelectedNodes)
 
 %% Survey all templates
+templates   = [];
+names       = [];
 itmp = 1;
 for hCurTmp = app.TmpTree.Children'
 
@@ -70,10 +72,10 @@ end
 function out = getValueFromStructure(inp)
 
 % for fn = fieldnames(inp)'
-%     out.(fn{1}) = inp.(fn{1}).value;
+%     out.(fn{1}) = inp.(fn{1}).Value;
 % end
 
-out = structfun(@(s) s.value, inp, 'UniformOutput', false);
+out = structfun(@(s) s.Value, inp, 'UniformOutput', false);
 
 end
 %% =======================================================================================

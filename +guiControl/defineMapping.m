@@ -81,7 +81,7 @@ function doTheThing(app, figAxLn, guiHand, simpName, type, default)
 
 app.mapping.(figAxLn).(simpName).guiHand = guiHand; % gui handle root name
 app.mapping.(figAxLn).(simpName).type    = type;
-app.mapping.(figAxLn).(simpName).value   = default;
+app.mapping.(figAxLn).(simpName).Value   = default;
 
 end
 %% =======================================================================================

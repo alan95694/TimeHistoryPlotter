@@ -12,7 +12,6 @@ time format - continue testing
 --- Required before release --- 
 load save template user specified file names
 Add tooltips
-finalize figure sizes before release
 load template check Value is in Items
 
 
@@ -54,15 +53,7 @@ delete(hProgDlg)
 
 ================
 
-Dont change
-750, 500 - small landscape
-1000, 640 - medium landscape
-1400, 850 - landscape
 
-560, 600 - small portrait
-830, 800 - medium portrait
-1050, 1000 - portrait
-maximize
 
 
 

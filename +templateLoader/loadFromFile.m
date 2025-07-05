@@ -31,10 +31,11 @@ for iTmp = 1:length(loadedTemplates)
 
     % Put loaded data into new template
     hNewTmp.Text = loadedTemplates{iTmp}.name;
-    app.IndependentChannelDropDown.Items = {loadedTemplates{iTmp}.figure.indpChan}; % this good?
+    app.IndependentChannelDropDown.Items = {loadedTemplates{iTmp}.figure.indpChan};
+    loadedTemplates{iTmp}.figure = rmfield(loadedTemplates{iTmp}.figure, 'indpChan');
 
     % Put loaded things into NodeData
-    addToNodeData(hNewTmp, loadedTemplates{iTmp}.figure);
+    addToNodeData(app, hNewTmp, loadedTemplates{iTmp}.figure);
     % Put NodData into gui
     guiControl.guiTreeNodeCom.treeNodeToGui(app, hNewTmp);
 
@@ -51,7 +52,7 @@ for iTmp = 1:length(loadedTemplates)
         loadedTemplates{iTmp}.axis{iax} = rmfield(loadedTemplates{iTmp}.axis{iax}, 'name');
 
         % Put loaded things into NodeData
-        addToNodeData(hNewAx, loadedTemplates{iTmp}.axis{iax});
+        addToNodeData(app, hNewAx, loadedTemplates{iTmp}.axis{iax});
 
         % Put NodData into gui
         guiControl.guiTreeNodeCom.treeNodeToGui(app, hNewAx);
@@ -68,7 +69,7 @@ for iTmp = 1:length(loadedTemplates)
             loadedTemplates{iTmp}.axis{iax}.line{iline} = rmfield(loadedTemplates{iTmp}.axis{iax}.line{iline}, 'name');
 
             % Put loaded things into NodeData
-            addToNodeData(hNewLine, loadedTemplates{iTmp}.axis{iax}.line{iline});         
+            addToNodeData(app, hNewLine, loadedTemplates{iTmp}.axis{iax}.line{iline});         
 
             % Put NodData into gui
             guiControl.guiTreeNodeCom.treeNodeToGui(app, hNewLine);
@@ -79,13 +80,25 @@ end
 
 end
 %% =======================================================================================
-function addToNodeData(hNode, myStruct)
+function addToNodeData(app, hNode, myStruct)
 
 for fn = fieldnames(hNode.NodeData)'
 
     if isfield(myStruct, fn{1})
-        hNode.NodeData.(fn{1}).Value = myStruct.(fn{1});
-        myStruct = rmfield(myStruct, fn{1});
+        if isequal(hNode.NodeData.(fn{1}).type, 'dd')
+            % Check Value is in Items
+            if any(ismember(app.(hNode.NodeData.(fn{1}).guiHand).Items, myStruct.(fn{1})))
+                hNode.NodeData.(fn{1}).Value = myStruct.(fn{1});
+                myStruct = rmfield(myStruct, fn{1});
+            else
+                fprintf('Dropdown content incompatibility - defaulting to first option.\n')
+                hNode.NodeData.(fn{1}).Value = app.(hNode.NodeData.(fn{1}).guiHand).Items{1};
+                myStruct = rmfield(myStruct, fn{1});
+            end
+        else
+            hNode.NodeData.(fn{1}).Value = myStruct.(fn{1});
+            myStruct = rmfield(myStruct, fn{1});
+        end
     else
 
     end
@@ -94,7 +107,8 @@ end
 % Were in file but not in current template format
 for fn = fieldnames(myStruct)'
     if ~isequal(fn{1}, 'line')
-        fprintf('"%s" was in loaded file but is not currently in app\n', fn{1});
+        fprintf('"%s" = "%s" was in loaded file but is not currently in app.\n', ...
+                fn{1}, myStruct.(fn{1}) )
     end
 end
 

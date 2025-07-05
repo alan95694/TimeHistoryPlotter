@@ -4,3 +4,5 @@ demoData/DemoData_03.csv
 demoData/16A(78)-32_time_data_10s_intervals.csv
 *.tHPlotter
 *.tHPlotter
+commandLineControl.m
+Time History Plotter.mlappinstall

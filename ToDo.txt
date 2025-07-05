@@ -6,31 +6,82 @@ Notes on what to do
 time format - continue testing
 
 
---- Bug fix or must do --- 
+--- Bugs --- 
+
+
+--- Required before release --- 
+load save template user specified file names
 Add tooltips
 finalize figure sizes before release
-progress dialog while loading and plotting
-tab order in gui
+load template check Value is in Items
 
---- Features to add ---
-command line control, load data and templates in mfile - call plotting to get plot
-in Axis List list box, specify how many "lines" are axis
-move axis list items up and down
-change "input" to popup in front of gui (?)
-figure option to have interpreter none or other options - defaul to none
-option to add template name to sgtitle - same line as file name
+
+--- Big features to add ---
+Command line control, load data and templates in mfile - call plotting to get plot
+
+
+
+--- Move & copy & reorder ---
+move things up and down
+copy within axis/template copy to new template/axis etc
+		
+
+--- Misc --- 
 multi option with axis: axis listbox name, first channel name, none, default to channel name(?)
 
 
-lines
-    add errorbar and rate limiter
-    move lines up and down, add copy options
-    multi channel add
-    inflection points (?)
-    units
-    eval equation
-    markers - option for setting total number of markers or on all points
-    remove outlyers
+--- lines tools --- 
+add errorbar 
+add	rate limiter
+inflection points (?)
+units
+eval equation
+markers - option for setting total number of markers or on all points
+remove outliers
+
+
+========================================================================
+hProgDlg = uiprogressdlg(app.TimeHistoryPlotterUIFigure, ...
+    'Title', 'Loading',...
+    'Message', 'Loading data file',...
+    'Indeterminate','on');
+pause(0.25)
+
+...
+
+delete(hProgDlg)
+
+
+================
+
+Dont change
+750, 500 - small landscape
+1000, 640 - medium landscape
+1400, 850 - landscape
+
+560, 600 - small portrait
+830, 800 - medium portrait
+1050, 1000 - portrait
+maximize
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -41,7 +41,12 @@ reset(hFig);
 drawnow
 
 % Figure size & location
-if ~strcmp(template.figure.pd_figureSize, 'Dont change')
+if strcmp(template.figure.pd_figureSize, 'Maximize')
+    hFig = figure;
+    hFig.WindowState = 'maximized';
+elseif ~strcmp(template.figure.pd_figureSize, 'Dont change')
+
+else
     tmp         = extractBefore(template.figure.pd_figureSize, '-');
     newSize     = str2num(tmp);
     oldPos      = hFig.Position;

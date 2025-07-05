@@ -4,10 +4,11 @@ function deleteFile(app)
 % 
 
 
-
-
+% Nothing to delete
+if isempty(app.LoadedFilesListBox.Items)
+    return
+end
 if isempty(app.LoadedFilesListBox.Items{1})
-    % Nothing to delete
     return
 end
 

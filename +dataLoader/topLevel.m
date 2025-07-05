@@ -30,6 +30,11 @@ if isfield(app.tHData, NAME)
     end
 end
 
+hProgDlg = uiprogressdlg(app.TimeHistoryPlotterUIFigure, ...
+    'Title', 'Loading',...
+    'Message', 'Loading data file',...
+    'Indeterminate','on');
+pause(0.25)
 
 %% Read file
 % Read CSV file into a table
@@ -48,7 +53,9 @@ app.tHData.(varNAME) = S;
 %% update gui
 
 % Add name to list box
-if isempty(app.LoadedFilesListBox.Items{1})
+if isempty(app.LoadedFilesListBox.Items)
+    app.LoadedFilesListBox.Items{1} = NAME;
+elseif isempty(app.LoadedFilesListBox.Items{1})
     app.LoadedFilesListBox.Items{1} = NAME;
 else
     app.LoadedFilesListBox.Items{end+1} = NAME;
@@ -57,7 +64,7 @@ app.LoadedFilesListBox.Value = NAME;
 
 guiControl.listBoxLoadedFilesChanged(app);
 
-
+delete(hProgDlg)
 
 
 end

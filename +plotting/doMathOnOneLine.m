@@ -8,8 +8,8 @@ strLegTxt = [];
 
 % Smoothdata
 if (optLine.b_applySmoothData)
-    depData     = smoothdata(depData, optLine.pd_sdMethod, str2num(optLine.str_sbWindow) );
-    strLegTxt   = [strLegTxt, ', ', optLine.pd_sdMethod, '( ', optLine.str_sbWindow, ')'];
+    depData     = smoothdata(depData, optLine.dd_sdMethod, str2num(optLine.str_sbWindow) );
+    strLegTxt   = [strLegTxt, ', ', optLine.dd_sdMethod, '( ', optLine.str_sbWindow, ')'];
 end
 
 % Filer

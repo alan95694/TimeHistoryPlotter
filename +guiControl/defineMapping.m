@@ -20,19 +20,19 @@ doTheThing(app, 'fig', 'VerticalLinesEditField',    'str_verticalLines',    'str
 doTheThing(app, 'fig', 'PostxlabeltextEditField',   'str_postXLabelText',   'str', '');
 doTheThing(app, 'fig', 'DateTimeFormatEditField',   'str_dateTimeFormat',   'str', '');
 % Numbers
-doTheThing(app, 'fig', 'TimeMaxEditField',      'num_timeMax', 'num', inf);
-doTheThing(app, 'fig', 'TimeMinEditField',      'num_timeMin', 'num', -inf);
+doTheThing(app, 'fig', 'TimeMaxEditField',          'num_timeMax', 'num', inf);
+doTheThing(app, 'fig', 'TimeMinEditField',          'num_timeMin', 'num', -inf);
 % DropDown
-doTheThing(app, 'fig', 'TileSpaceDropDown',       'pd_TileSpace',   'dd', 'compact');
-doTheThing(app, 'fig', 'FigureNumDropDown',       'pd_figure',      'dd', 'gcf');
-doTheThing(app, 'fig', 'FigureSizeDropDown',      'pd_figureSize',  'dd', 'Dont change');
-doTheThing(app, 'fig', 'TextInterpreterDropDown', 'pd_textInterp',  'dd', 'none');
+doTheThing(app, 'fig', 'TileSpaceDropDown',         'dd_TileSpace',   'dd', 'compact');
+doTheThing(app, 'fig', 'FigureNumDropDown',         'dd_figure',      'dd', 'gcf');
+doTheThing(app, 'fig', 'FigureSizeDropDown',        'dd_figureSize',  'dd', 'Dont change');
+doTheThing(app, 'fig', 'TextInterpreterDropDown',   'dd_textInterp',  'dd', 'none');
 
 % ----------------------------------------------------------------------------------------
 % axis bools
-doTheThing(app, 'axis', 'TightCheckBox',        'b_tight',      'bool', false);
-doTheThing(app, 'axis', 'DontShowAxisCheckBox', 'b_dontShow',   'bool', false);
-doTheThing(app, 'axis', 'logyCheckBox',         'b_logy',       'bool', false);
+doTheThing(app, 'axis', 'TightCheckBox',            'b_tight',      'bool', false);
+doTheThing(app, 'axis', 'DontShowAxisCheckBox',     'b_dontShow',   'bool', false);
+doTheThing(app, 'axis', 'logyCheckBox',             'b_logy',       'bool', false);
 doTheThing(app, 'axis', 'AxisNameasylabelCheckBox', 'b_AxisNameYLabel', 'bool', true);
 
 
@@ -45,7 +45,7 @@ doTheThing(app, 'axis', 'yminEditField', 'num_ymin', 'num', -inf);
 doTheThing(app, 'axis', 'ymaxEditField', 'num_ymax', 'num', inf);
 
 % DropDown
-doTheThing(app, 'axis', 'LegendLocationDropDown',    'pd_legendLocation',   'dd', 'northeast');
+doTheThing(app, 'axis', 'LegendLocationDropDown',    'dd_legendLocation',   'dd', 'northeast');
 
 % ----------------------------------------------------------------------------------------
 % Line bools
@@ -68,12 +68,12 @@ doTheThing(app, 'line', 'FilterbLineEditField',     'str_filterB',  'str', '0.2 
 
 
 % DropDown
-doTheThing(app, 'line', 'ColorDropDown',        'pd_color',     'dd', 'automatic');
-doTheThing(app, 'line', 'LineWidthDropDown',    'pd_lineWidth', 'dd', '0.5');
-doTheThing(app, 'line', 'MarkerDropDown',       'pd_marker',    'dd', 'none');
-doTheThing(app, 'line', 'StyleDropDown',        'pd_style',     'dd', '-');
-doTheThing(app, 'line', 'MethodLineDropDown',   'pd_sdMethod',  'dd', 'movmean');
-doTheThing(app, 'line', 'MarkerSizeDropDown',    'pd_markerSize', 'dd', '6');
+doTheThing(app, 'line', 'ColorDropDown',        'dd_color',     'dd', 'automatic');
+doTheThing(app, 'line', 'LineWidthDropDown',    'dd_lineWidth', 'dd', '0.5');
+doTheThing(app, 'line', 'MarkerDropDown',       'dd_marker',    'dd', 'none');
+doTheThing(app, 'line', 'StyleDropDown',        'dd_style',     'dd', '-');
+doTheThing(app, 'line', 'MethodLineDropDown',   'dd_sdMethod',  'dd', 'movmean');
+doTheThing(app, 'line', 'MarkerSizeDropDown',    'dd_markerSize', 'dd', '6');
 
 end
 %% =======================================================================================

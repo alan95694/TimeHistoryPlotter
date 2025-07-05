@@ -10,7 +10,7 @@ strLeg  = propLine.name; % strDepName;
 
 %% Line properties
 % set color
-switch propLine.pd_color
+switch propLine.dd_color
     case {'automatic'}
     case {'black'}
         hLine.Color = [0 0 0];
@@ -32,13 +32,13 @@ switch propLine.pd_color
         hLine.Color = [1 0 1];
 end
 
-hLine.LineWidth = str2double(propLine.pd_lineWidth);
+hLine.LineWidth = str2double(propLine.dd_lineWidth);
 
-if ~isequal(propLine.pd_marker, "none")
-    hLine.Marker = propLine.pd_marker;
+if ~isequal(propLine.dd_marker, "none")
+    hLine.Marker = propLine.dd_marker;
 end
-hLine.LineStyle = propLine.pd_style;
-hLine.MarkerSize = str2double(propLine.pd_markerSize);
+hLine.LineStyle = propLine.dd_style;
+hLine.MarkerSize = str2double(propLine.dd_markerSize);
 
 dx = xlim;
 dy = ylim;

@@ -12,8 +12,8 @@ time format - continue testing
 --- Required before release --- 
 load save template user specified file names
 Add tooltips
-load template check Value is in Items
-
+enable close conformation
+spell check
 
 --- Big features to add ---
 Command line control, load data and templates in mfile - call plotting to get plot

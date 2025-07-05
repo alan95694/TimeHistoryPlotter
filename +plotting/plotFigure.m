@@ -24,14 +24,14 @@ fn = fieldnames(tHData);
 nVertLines = str2num(template.figure.str_verticalLines);
 
 %% Setup figure
-switch template.figure.pd_figure
+switch template.figure.dd_figure
     case ("gcf")
         hFig = gcf; 
         figure(hFig); % Force into windows focus
     case ("figure")
         hFig = figure; 
     otherwise   
-        tmp = strrep(template.figure.pd_figure, "figure(", "");
+        tmp = strrep(template.figure.dd_figure, "figure(", "");
         tmp = str2double(strrep(tmp, ")", ""));
         hFig = figure(tmp);
 end
@@ -41,13 +41,13 @@ reset(hFig);
 drawnow
 
 % Figure size & location
-if strcmp(template.figure.pd_figureSize, 'Maximize')
+if strcmp(template.figure.dd_figureSize, 'Maximize')
     hFig = figure;
     hFig.WindowState = 'maximized';
-elseif ~strcmp(template.figure.pd_figureSize, 'Dont change')
+elseif strcmp(template.figure.dd_figureSize, 'Dont change')
 
 else
-    tmp         = extractBefore(template.figure.pd_figureSize, '-');
+    tmp         = extractBefore(template.figure.dd_figureSize, '-');
     newSize     = str2num(tmp);
     oldPos      = hFig.Position;
     top         = oldPos(2) + oldPos(4);
@@ -58,7 +58,7 @@ end
 
 
 % subplot spacing
-switch template.figure.pd_TileSpace
+switch template.figure.dd_TileSpace
     case {"loose"}
         tiledlayout("vertical",... % new in v23a
             "TileSpacing","loose", ...
@@ -156,7 +156,7 @@ for iax = 1:length(template.axis)
     end
     if (iax < length(template.axis))
         % Remove XTickLabel
-        switch template.figure.pd_TileSpace
+        switch template.figure.dd_TileSpace
             case {"none", "tight", "compact"}
                 set(hTile(end), 'XTickLabel', []);
             otherwise
@@ -195,17 +195,17 @@ for iax = 1:length(template.axis)
 
 
     % --- Legends and x/y labels --- 
-    if ~isempty(hLeg) && ~strcmp(template.axis{iax}.pd_legendLocation, 'none')
+    if ~isempty(hLeg) && ~strcmp(template.axis{iax}.dd_legendLocation, 'none')
         hLeg = legend(hLeg, strLeg, 'Interpreter', 'none', ...
-            'location', template.axis{iax}.pd_legendLocation, ...
+            'location', template.axis{iax}.dd_legendLocation, ...
             'fontsize', 9);
         if ~isempty(template.axis{iax}.str_legendTitle)
             title(hLeg, template.axis{iax}.str_legendTitle, ...
-                'Interpreter', template.figure.pd_textInterp);
+                'Interpreter', template.figure.dd_textInterp);
         end
     end
     if (template.axis{iax}.b_AxisNameYLabel)
-        ylabel(template.axis{iax}.name, 'Interpreter', template.figure.pd_textInterp, ...
+        ylabel(template.axis{iax}.name, 'Interpreter', template.figure.dd_textInterp, ...
             'FontSize', 12);
     end
 end
@@ -213,7 +213,7 @@ end
 %% Post Plotting formatting
 
 strXLabel = sprintf('%s %s', template.figure.indpChan, template.figure.str_postXLabelText);
-xlabel(strXLabel, 'Interpreter', template.figure.pd_textInterp, ...
+xlabel(strXLabel, 'Interpreter', template.figure.dd_textInterp, ...
     'FontSize', 12);
 
 % Apply time ranges
@@ -261,7 +261,7 @@ else
     elseif template.figure.b_fileNameInSgtitle && template.figure.b_templateNameInSgt
         foo{end+1} = [strDataFileName , ', ', template.name];
     end
-    sgtitle(foo, 'Interpreter', template.figure.pd_textInterp);
+    sgtitle(foo, 'Interpreter', template.figure.dd_textInterp);
 end
 
 

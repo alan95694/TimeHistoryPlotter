@@ -1,4 +1,4 @@
-function deleteTemplate(app)
+function deleteTemplate(app, optDeleteAll)
 % 
 % 
 % 

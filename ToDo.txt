@@ -32,10 +32,9 @@ multi option with axis: axis listbox name, first channel name, none, default to 
 add errorbar 
 add	rate limiter
 inflection points (?)
-units
-eval equation
 markers - option for setting total number of markers or on all points
 remove outliers
+normalize 0 to 1, -1 to +1, keep zero as zero
 
 
 ========================================================================

@@ -5,6 +5,11 @@ function [depData, strLegTxt] = doMathOnOneLine(indpData, depData, optLine)
 
 strLegTxt = [];
 
+% Units conversion
+if ~strcmp(optLine.dd_units, 'none')
+    depData = feval( ['units.', optLine.dd_units], depData);
+    strLegTxt   = [strLegTxt, ', ', optLine.dd_units, ' '];
+end
 
 % Smoothdata
 if (optLine.b_applySmoothData)

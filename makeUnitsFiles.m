@@ -1,10 +1,14 @@
 function makeUnitsFiles
+% 
+% 
+% 
 
-
+% good source for more units: https://mechanicalc.com/reference/unit-conversion-factors
 
 
 folder = 'C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter\+units';
 
+% Values from chatgpt
 out = getStuff();
 
 
@@ -39,7 +43,7 @@ end
 
 % Write some text to the file
 fprintf(fileID, ['function out = ', fileName, '(inp)\n']);
-fprintf(fileID, ['%% ' info{1}, ' to ', info{3}, ', k = ', num2str(info{5}), '\n']);
+fprintf(fileID, ['%% ' info{1}, ' to ', info{3}, '\n']);
 fprintf(fileID, '\n');
 fprintf(fileID, ['out = ', num2str(info{5}), '.*inp;\n']);
 fprintf(fileID, 'end\n');

@@ -1,5 +1,5 @@
 function out = cal_To_J(inp)
-% calorie to joule, k = 4.184
+% calorie to joule
 
 out = 4.184.*inp;
 end

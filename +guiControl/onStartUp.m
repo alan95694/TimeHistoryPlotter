@@ -23,20 +23,64 @@ end
 %% =======================================================================================
 function readUnits(app)
 
-path = mfilename('fullpath');
-[parentFolder] = fileparts(path);
-[grandParentFolder] = fileparts(parentFolder);
+[grandParentFolder] = fileparts( fileparts( mfilename('fullpath') ) );
 
-folderUnits = fullfile(grandParentFolder, '+units');
-
-aa = dir(folderUnits);
+folder = fullfile(grandParentFolder, '+units');
+aa = dir(folder);
 
 bb = {aa.name}';
-bb = {'none', bb{3:end}};
-bb = cellfun(@(x) strrep(x, '.m', ''), bb, 'UniformOutput', false); % remove .m
+files = {'none', bb{3:end}};
+names = cellfun(@(x) strrep(x, '.m', ''), files, 'UniformOutput', false); % remove .m
 
-app.UnitsConversionDropDown.Items = bb;
+app.UnitsConversionDropDown.Items = names;
 app.UnitsConversionDropDown.Value = 'none';
+
+% Make tooltip info
+app.cUnintsText = rearUnitsFiles( folder, files);
+
 
 end
 %% =======================================================================================
+function out = rearUnitsFiles(folder, files)
+
+out = [];
+for curFile = {files{2:end}}
+    fileID = fopen(fullfile(folder, curFile{1}), 'r');
+    if (fileID == -1)
+        out = [];
+        return
+    end
+    
+    fgetl(fileID); % burn
+    str_Names   = fgetl(fileID); % names
+    fgetl(fileID); % burn
+    str_Math    = fgetl(fileID); % math
+    fclose(fileID);
+
+    out{end+1} = [str_Names, ': ', str_Math];
+end
+
+end
+%% =======================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

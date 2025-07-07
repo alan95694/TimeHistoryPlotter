@@ -1,5 +1,5 @@
 function out = ton_To_kg(inp)
-% ton (US) to kilogram, k = 907.185
+% ton (US) to kilogram
 
 out = 907.185.*inp;
 end

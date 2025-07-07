@@ -1,5 +1,5 @@
 function out = in_To_cm(inp)
-% inch to centimeter, k = 2.54
+% inch to centimeter
 
 out = 2.54.*inp;
 end

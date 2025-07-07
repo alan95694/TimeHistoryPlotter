@@ -1,5 +1,5 @@
 function out = lb_To_kg(inp)
-% pound to kilogram, k = 0.45359
+% pound to kilogram
 
 out = 0.45359.*inp;
 end

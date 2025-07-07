@@ -1,5 +1,5 @@
 function out = st_To_kg(inp)
-% stone (UK) to kilogram, k = 6.3503
+% stone (UK) to kilogram
 
 out = 6.3503.*inp;
 end

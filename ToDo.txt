@@ -35,7 +35,7 @@ inflection points (?)
 markers - option for setting total number of markers or on all points
 remove outliers
 normalize 0 to 1, -1 to +1, keep zero as zero
-
+units, tooltip is second line of file
 
 ========================================================================
 hProgDlg = uiprogressdlg(app.TimeHistoryPlotterUIFigure, ...

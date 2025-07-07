@@ -39,8 +39,17 @@ if (optLine.b_differentiate)
     strLegTxt = [strLegTxt, ', differentiate'];
 end
 
+% User equation
+if ~isempty(optLine.str_UserEq)
+    depData = doUserEq(depData, indpData, optLine.str_UserEq);
+    strLegTxt = [strLegTxt, ', user equation'];
+end
 
 
-
+end
+%% =======================================================================================
+function out = doUserEq(xx, tt, str_UserEq)
+% eval uses xx and tt
+out = eval(str_UserEq);
 end
 %% =======================================================================================

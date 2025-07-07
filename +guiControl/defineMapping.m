@@ -63,6 +63,7 @@ doTheThing(app, 'line', 'ApplyFilterLineCheckBox',      'b_applyFilter',        
 doTheThing(app, 'line', 'WindowLineEditField',      'str_sbWindow', 'str', '4');
 doTheThing(app, 'line', 'FilteraLineEditField',     'str_filterA',  'str', '1');
 doTheThing(app, 'line', 'FilterbLineEditField',     'str_filterB',  'str', '0.2 0.2 0.2 0.2 0.2');
+doTheThing(app, 'line', 'UserEquationEditField',    'str_UserEq',   'str', '');
 
 % Numbers
 

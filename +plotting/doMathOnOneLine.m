@@ -32,6 +32,18 @@ if (optLine.b_biasToZero)
     strLegTxt = [strLegTxt, ', bias to zero'];
 end
 
+% Normalize [0, 1]
+if (optLine.b_norm01)
+    depData = interp1([min(depData), max(depData)], [0 1], depData);
+    strLegTxt = [strLegTxt, ', Normalize 0 to 1'];
+end
+
+% Normalize [-1, 1]
+if (optLine.b_normng11)
+    depData = interp1([min(depData), 0, max(depData)], [-1, 0, 1], depData);
+    strLegTxt = [strLegTxt, ', Normalize -1 to 1'];
+end
+
 % Integrate
 if (optLine.b_integrate)
     depData = cumtrapz(indpData, depData);

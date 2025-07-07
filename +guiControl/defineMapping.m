@@ -58,6 +58,8 @@ doTheThing(app, 'line', 'DifferentiateLineCheckBox',    'b_differentiate',      
 doTheThing(app, 'line', 'BiastoZeroLineCheckBox',       'b_biasToZero',         'bool', false);
 doTheThing(app, 'line', 'ApplySmoothDataLineCheckBox',  'b_applySmoothData',    'bool', false);
 doTheThing(app, 'line', 'ApplyFilterLineCheckBox',      'b_applyFilter',        'bool', false);
+doTheThing(app, 'line', 'normalize01CheckBox',          'b_norm01',         'bool', false);
+doTheThing(app, 'line', 'normalize_ng11CheckBox',       'b_normng11',       'bool', false);
 
 % strings
 doTheThing(app, 'line', 'WindowLineEditField',      'str_sbWindow', 'str', '4');

@@ -12,7 +12,6 @@ time format - continue testing
 
 --- Required before release --- 
 load save template user specified file names
-enable close conformation
 spell check
 
 --- Big features to add ---
@@ -27,7 +26,7 @@ copy within axis/template copy to new template/axis etc
 
 --- Misc --- 
 multi option with axis: axis listbox name, first channel name, none, default to channel name(?)
-bias time to zero
+icon pictures for things
 
 
 --- lines tools --- 

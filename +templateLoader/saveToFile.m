@@ -5,11 +5,16 @@ function saveToFile(app)
 
 
 
-if (true)
+if (false)
     file = fullfile('C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter', 'templateSaveFile.tHPlotter');
 else
-    % uiget file thing....
-
+    [file, path] = uiputfile({'*.tHPlotter'});
+    if isequal(file,0) || isequal(path,0)
+       return
+    else
+       file = fullfile(path, file);
+       clear pathname filename
+    end
 end
 
 

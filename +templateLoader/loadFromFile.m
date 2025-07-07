@@ -6,11 +6,18 @@ function loadFromFile(app)
 
 
 %% Get file to load
-if (true)
+if (false)
     file = fullfile('C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter', 'templateSaveFile.tHPlotter');
 else
     % uiget file thing....
+    [filename, pathname] = uigetfile('*.tHPlotter', 'Pick a plotting template file');
 
+    if isequal(filename,0) || isequal(pathname,0)
+       return
+    else
+       file = fullfile(pathname, filename);
+       clear pathname filename
+    end
 end
 
 

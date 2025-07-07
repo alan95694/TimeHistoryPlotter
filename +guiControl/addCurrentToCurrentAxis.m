@@ -27,7 +27,7 @@ for ii = 1:length(strDataChan)
     if (optUseCurAxis)
         hh = guiControl.getEditableNodeHandles(app.TmpTree.SelectedNodes);
 
-        if isempty(hh.line)
+        if isempty(hh.ax)
             uialert(app.TimeHistoryPlotterUIFigure, ...
                 "Please select one Axis.", ...
                 "Selection Invalid"); % title

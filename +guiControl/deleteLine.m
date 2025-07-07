@@ -9,7 +9,12 @@ function deleteLine(app)
 
 % Get selected line
 if isempty(hh.line)
-    return
+
+    if length(hh.ax.Children) == 1
+        hh.line = hh.ax.Children;
+    else
+        return
+    end
 end
 
 %% Delete selected axes

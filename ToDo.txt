@@ -7,7 +7,6 @@ time format - continue testing
 
 
 --- Bugs --- 
-delete line is adding more lines to the axis
 
 
 
@@ -37,7 +36,7 @@ add	rate limiter
 inflection points (?)
 markers - option for setting total number of markers or on all points
 remove outliers
-normalize 0 to 1, -1 to +1, keep zero as zero
+
 
 
 ========================================================================

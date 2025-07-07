@@ -14,6 +14,8 @@ doTheThing(app, 'fig', 'BoldCheckBox',      'b_bold',       'bool', false);
 doTheThing(app, 'fig', 'logxCheckBox',      'b_logx',       'bool', false);
 doTheThing(app, 'fig', 'FileNameinsgtitleCheckBox',     'b_fileNameInSgtitle', 'bool', true);
 doTheThing(app, 'fig', 'TemplateNameinsgtitleCheckBox', 'b_templateNameInSgt', 'bool', false);
+doTheThing(app, 'fig', 'BiasTimetoZeroCheckBox', 'b_BiasTimeToZero', 'bool', false);
+
 % figure strings
 doTheThing(app, 'fig', 'sgtitleEditField',          'str_sgtitle',          'str', '');
 doTheThing(app, 'fig', 'VerticalLinesEditField',    'str_verticalLines',    'str', '');

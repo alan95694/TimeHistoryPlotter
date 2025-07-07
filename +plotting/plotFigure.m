@@ -20,6 +20,10 @@ else
     time = tHData.(template.figure.indpChan);
 end
 
+if template.figure.b_BiasTimeToZero
+    time = time - time(1);
+end
+
 fn = fieldnames(tHData);
 nVertLines = str2num(template.figure.str_verticalLines);
 

@@ -53,9 +53,6 @@ delete(hProgDlg)
 
 ================
 
-User specified equation, input used with eval() function.  Dependent data variable is xx, independent is tt.  
-
-Example: tt.*0.3.*xx + 1.0
 
 
 

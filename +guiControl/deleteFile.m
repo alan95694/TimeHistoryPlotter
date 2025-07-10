@@ -22,7 +22,7 @@ idx = find(match, 1);  % find index of first match
 if ~isempty(idx)
     app.LoadedFilesListBox.Items(idx) = [];  % remove it
 
-    app.tHData = rmfield(app.tHData, strDeleteMe);
+    app.tHData = rmfield(app.tHData, matlab.lang.makeValidName(strDeleteMe));
 else
     error('did not find the thing.')
 end

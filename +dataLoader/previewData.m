@@ -11,30 +11,36 @@ if isempty(app.LoadedFilesListBox.Items{1})
     return
 end
 
-
-
 curName = app.LoadedFilesListBox.Value;
 
-
-tmpData = truncateStructFields(app.tHData.(curName), 20);
-
-tb = struct2table(tmpData);
+[Si, Se] = truncateStructFields(app.tHData.(...
+    matlab.lang.makeValidName(curName)), 15);
 
 clc, 
 disp(' ')
 fprintf('Top of data file: "%s"\n', curName)
 disp(' ')
-disp(tb)
+disp(struct2table(Si))
+
+disp(' ')
+fprintf('End of data file: "%s"\n', curName)
+disp(' ')
+disp(struct2table(Se))
 
 
 end
 %% =======================================================================================
-function S = truncateStructFields(S, n)
+function [Si, Se] = truncateStructFields(S, n)
     fields = fieldnames(S);
 
-    n = min(n, length(S.(fields{1})));
+    ll  = length(S.(fields{1}));
+    ni  = 1:min(n, ll);
+    ne  = max(1, ll-n):ll;
 
     for i = 1:numel(fields)
-        S.(fields{i}) = S.(fields{i})(1:n);
+        Si.(fields{i}) = S.(fields{i})(ni);
+    end
+    for i = 1:numel(fields)
+        Se.(fields{i}) = S.(fields{i})(ne);
     end
 end

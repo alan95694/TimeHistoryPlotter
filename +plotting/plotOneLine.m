@@ -36,6 +36,7 @@ hLine.LineWidth = str2double(propLine.dd_lineWidth);
 
 if ~isequal(propLine.dd_marker, "none")
     hLine.Marker = propLine.dd_marker;
+    hLine.MarkerIndices = 1:str2double(propLine.dd_MarkerFreq):length(indpData); 
 end
 hLine.LineStyle = propLine.dd_style;
 hLine.MarkerSize = str2double(propLine.dd_markerSize);

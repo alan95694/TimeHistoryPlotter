@@ -6,27 +6,25 @@ function loadFromFile(app)
 
 
 %% Get file to load
-if (false)
-    file = fullfile('C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter', 'templateSaveFile.tHPlotter');
+% uiget file thing....
+[filename, pathname] = uigetfile('*.tHPlotter', 'Pick a plotting template file');
+
+if isequal(filename,0) || isequal(pathname,0)
+   return
 else
-    % uiget file thing....
-    [filename, pathname] = uigetfile('*.tHPlotter', 'Pick a plotting template file');
-
-    if isequal(filename,0) || isequal(pathname,0)
-       return
-    else
-       file = fullfile(pathname, filename);
-       clear pathname filename
-    end
+   file = fullfile(pathname, filename);
+   clear pathname filename
 end
-
 
 %% Load file
 try
     foo = load(file, "-mat");
     loadedTemplates = foo.templates;
 catch
-    % error message
+    uialert(app.TimeHistoryPlotterUIFigure, "Error loading templates", ...
+                "Load FAILED.", ...
+                'Icon','error');
+    return
 end
 
 %% Put content of file into new templates
@@ -111,7 +109,7 @@ for fn = fieldnames(hNode.NodeData)'
     end
 end
 
-% Were in file but not in current template format
+% Was in file but not in current template format
 for fn = fieldnames(myStruct)'
     if ~isequal(fn{1}, 'line')
         fprintf('"%s" = "%s" was in loaded file but is not currently in app.\n', ...

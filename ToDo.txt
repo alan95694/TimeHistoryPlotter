@@ -11,7 +11,6 @@ time format - continue testing
 
 
 --- Required before release --- 
-load save template user specified file names
 spell check
 
 --- Big features to add ---
@@ -33,7 +32,6 @@ icon pictures for things
 add errorbar 
 add	rate limiter
 inflection points (?)
-markers - option for setting total number of markers or on all points
 remove outliers
 
 
@@ -51,7 +49,6 @@ delete(hProgDlg)
 
 
 ================
-
 
 
 

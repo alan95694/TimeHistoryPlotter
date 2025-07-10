@@ -59,9 +59,7 @@ else
     hFig.Position = [oldPos(1), newBottom, newSize(1), newSize(2)];
 end
 
-
-
-% subplot spacing
+% Subplot spacing
 switch template.figure.dd_TileSpace
     case {"loose"}
         tiledlayout("vertical",... % new in v23a

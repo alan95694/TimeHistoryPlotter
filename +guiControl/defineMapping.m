@@ -80,6 +80,7 @@ doTheThing(app, 'line', 'StyleDropDown',        'dd_style',     'dd', '-');
 doTheThing(app, 'line', 'MethodLineDropDown',   'dd_sdMethod',  'dd', 'movmean');
 doTheThing(app, 'line', 'MarkerSizeDropDown',   'dd_markerSize', 'dd', '6');
 doTheThing(app, 'line', 'UnitsConversionDropDown',  'dd_units', 'dd', 'none');
+doTheThing(app, 'line', 'MarkerFreqDropDown',  'dd_MarkerFreq', 'dd', '1');
 
 
 end

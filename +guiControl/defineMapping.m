@@ -62,6 +62,10 @@ doTheThing(app, 'line', 'ApplySmoothDataLineCheckBox',  'b_applySmoothData',    
 doTheThing(app, 'line', 'ApplyFilterLineCheckBox',      'b_applyFilter',        'bool', false);
 doTheThing(app, 'line', 'normalize01CheckBox',          'b_norm01',         'bool', false);
 doTheThing(app, 'line', 'normalize_ng11CheckBox',       'b_normng11',       'bool', false);
+doTheThing(app, 'line', 'AbsCheckBox',          'b_abs',          'bool', false);
+doTheThing(app, 'line', 'DiffCheckBox',         'b_diff',         'bool', false);
+doTheThing(app, 'line', 'NotFiniteCheckBox',    'b_notFinite',    'bool', false);
+
 
 % strings
 doTheThing(app, 'line', 'WindowLineEditField',      'str_sbWindow', 'str', '4');

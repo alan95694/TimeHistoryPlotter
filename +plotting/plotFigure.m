@@ -128,9 +128,12 @@ for iax = 1:length(template.axis)
             continue
         end
 
+        depData     = tHData.(strDepName);
+        depData_0   = depData;
+
         % --- Do math on data --- 
         try
-            [depData, strLegTxt] = plotting.doMathOnOneLine(time, tHData.(strDepName), template.axis{iax}.line{iline} );
+            [depData, strLegTxt] = plotting.doMathOnOneLine(time, depData, template.axis{iax}.line{iline} );
         catch
             uialert(hWindow, ...
                 {'Error while doing math.'; ...
@@ -144,6 +147,13 @@ for iax = 1:length(template.axis)
         [hLeg(end+1), strLeg{end+1}] = plotting.plotOneLine(time, depData, ...
                         template.axis{iax}.line{iline} );
         strLeg{end} = [strLeg{end}, strLegTxt];
+
+        % Not finite
+        if (template.axis{iax}.line{iline}.b_notFinite)
+            iNonFinite = ~isfinite(depData_0);
+            xline(time(iNonFinite), 'LineWidth', 1.1);
+        end
+
     end
     if (hasRightPlotting)
         yyaxis left

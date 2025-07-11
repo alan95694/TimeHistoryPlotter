@@ -7,7 +7,7 @@ time format - continue testing
 
 
 --- Bugs --- 
-
+time and loading of 'time_series_15min_singleindex_small.csv'
 
 
 --- Required before release --- 
@@ -26,6 +26,22 @@ copy within axis/template copy to new template/axis etc
 --- Misc --- 
 multi option with axis: axis listbox name, first channel name, none, default to channel name(?)
 icon pictures for things
+
+figure
+	values at time
+	include ylable at figure option
+
+axis
+	thick
+	minimum vertical range
+
+line
+	resolve to +-180 and 0-360
+	detrend - Detrend data, uses Butter Low Pass, default freq 0.2.
+	legend string
+	vert line at change
+	values at time
+
 
 
 --- lines tools --- 

@@ -56,6 +56,19 @@ if (optLine.b_differentiate)
     strLegTxt = [strLegTxt, ', differentiate'];
 end
 
+% abs
+if (optLine.b_abs)
+    depData     = abs(depData);
+    strLegTxt   = [strLegTxt, ', abs'];
+end
+
+% diff
+if (optLine.b_diff)
+    depData         = diff(depData);
+    depData(end+1)  = depData(end);
+    strLegTxt   = [strLegTxt, ', diff'];
+end
+
 % User equation
 if ~isempty(optLine.str_UserEq)
     depData = doUserEq(depData, indpData, optLine.str_UserEq);

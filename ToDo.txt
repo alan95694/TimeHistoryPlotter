@@ -7,8 +7,6 @@ time format - continue testing
 
 
 --- Bugs --- 
-time and loading of 'time_series_15min_singleindex_small.csv'
-option to output date time format core info
 
 
 --- Required before release --- 
@@ -71,8 +69,6 @@ delete(hProgDlg)
 
 
 ================
-
-
 
 
 

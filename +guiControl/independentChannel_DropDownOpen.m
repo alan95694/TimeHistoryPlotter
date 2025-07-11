@@ -33,7 +33,7 @@ newList = [firstItem; rest(hasTime); rest(~hasTime)];
 %% Update drop down
 app.IndependentChannelDropDown.Items = newList;
 
-if any(contains(newList, selectedStart))
+if any(strcmp(newList, selectedStart))
     app.IndependentChannelDropDown.Value = selectedStart;
 else
     app.IndependentChannelDropDown.Value = newList{1};

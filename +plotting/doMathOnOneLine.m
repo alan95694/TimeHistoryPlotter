@@ -46,14 +46,24 @@ end
 
 % Integrate
 if (optLine.b_integrate)
-    depData = cumtrapz(indpData, depData);
-    strLegTxt = [strLegTxt, ', integrate'];
+    if isa(indpData, 'datetime')
+        disp('Datetime objects can be generically integrated.')
+        strLegTxt = [strLegTxt, ', <error>'];
+    else
+        depData = cumtrapz(indpData, depData);
+        strLegTxt = [strLegTxt, ', Integrate'];
+    end
 end
 
 % Differentiate
 if (optLine.b_differentiate)
-    depData = gradient(depData, indpData);
-    strLegTxt = [strLegTxt, ', differentiate'];
+    if isa(indpData, 'datetime')
+        disp('Datetime objects can be generically differentiated.')
+        strLegTxt = [strLegTxt, ', <error>'];
+    else
+        depData = gradient(depData, indpData);
+        strLegTxt = [strLegTxt, ', Differentiate'];
+    end
 end
 
 % abs

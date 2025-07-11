@@ -1,9 +1,10 @@
-function [bMissingData] = plotFigure(template, tHData, hWindow, strDataFileName)
+function [bMissingData, strError] = plotFigure(template, tHData, hWindow, strDataFileName)
 % 
 % 
 % 
 
 bMissingData = false;
+strError = [];
 
 %% Gather things
 if ~isfield(tHData, template.figure.indpChan)
@@ -12,13 +13,46 @@ if ~isfield(tHData, template.figure.indpChan)
 end
 
 %% Work on time channel that has string date format stuffs.
+bTimeFormatError = false;
 if ~isempty(template.figure.str_dateTimeFormat)
-    % "aapl_history" date fomat MMM d yyyy
-    time = datetime(tHData.(template.figure.indpChan), ...
-                'InputFormat', template.figure.str_dateTimeFormat);
+    try
+        foo = strrep(template.figure.str_dateTimeFormat, '''''', ''''); % replace double quote with single
+        time = datetime(tHData.(template.figure.indpChan), ...
+                'InputFormat', foo);
+    catch
+        time = {};
+        bTimeFormatError = true;
+    end
 else
     time = tHData.(template.figure.indpChan);
 end
+
+% Ensure time is valif for plotting
+if (iscell(time) || bTimeFormatError)
+    disp(' ')
+    disp(' ')
+    disp('Time format INVALID for plotting, ')
+    disp('  please specify\correct "Date Time Format" under Figure Properties')
+    disp('First time value: ')
+    if iscell(tHData.(template.figure.indpChan))        
+        disp(tHData.(template.figure.indpChan){1} )
+        sTime = num2str(tHData.(template.figure.indpChan){1});
+    else
+        disp(tHData.(template.figure.indpChan)(1) )
+        sTime = num2str(tHData.(template.figure.indpChan)(1));
+    end
+    disp(' ')
+
+    if isempty(template.figure.str_dateTimeFormat)
+        fprintf('datetime(''%s'', ''format'', <Date Time Format from Figure Properties>) must evaluate validly)\n', sTime)
+    else
+        fprintf('datetime(''%s'', ''format'', ''%s'')\n', sTime, template.figure.str_dateTimeFormat)
+    end
+    disp(' ')
+    strError = 'Time format invalid for plotting, please specify\correct "Date Time Format" under Figure Properties.  See Command Window for more details.';
+    return
+end
+
 
 if template.figure.b_BiasTimeToZero
     time = time - time(1);
@@ -84,6 +118,16 @@ setFigName = ['Data file name: "', strDataFileName, '", plotted with "', templat
 set(hFig, 'name', setFigName);
 
 %% Do plotting
+
+% Count axes to be plotted
+nAxesToBePlotted = 0;
+for iax = 1:length(template.axis)
+    if (template.axis{iax}.b_dontShow)
+        continue
+    end
+    nAxesToBePlotted = nAxesToBePlotted + 1;
+end
+
 hTile = [];
 for iax = 1:length(template.axis)
 
@@ -166,7 +210,7 @@ for iax = 1:length(template.axis)
     if (template.figure.b_minorGrid)
         grid minor
     end
-    if (iax < length(template.axis))
+    if (iax < nAxesToBePlotted)
         % Remove XTickLabel
         switch template.figure.dd_TileSpace
             case {"none", "tight", "compact"}

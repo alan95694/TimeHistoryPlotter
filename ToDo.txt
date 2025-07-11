@@ -8,6 +8,7 @@ time format - continue testing
 
 --- Bugs --- 
 time and loading of 'time_series_15min_singleindex_small.csv'
+option to output date time format core info
 
 
 --- Required before release --- 
@@ -26,6 +27,8 @@ copy within axis/template copy to new template/axis etc
 --- Misc --- 
 multi option with axis: axis listbox name, first channel name, none, default to channel name(?)
 icon pictures for things
+search: add && option 
+
 
 figure
 	values at time
@@ -51,7 +54,10 @@ inflection points (?)
 remove outliers
 
 
-
+% "aapl_history" date fomat MMM d yyyy
+% "time_series_15..." yyyy-MM-dd'T'HH:mm:ss'Z'
+	
+	
 ========================================================================
 hProgDlg = uiprogressdlg(app.TimeHistoryPlotterUIFigure, ...
     'Title', 'Loading',...
@@ -65,9 +71,6 @@ delete(hProgDlg)
 
 
 ================
-
-
-
 
 
 

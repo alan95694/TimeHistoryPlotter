@@ -31,12 +31,18 @@ hwb = uiprogressdlg(app.TimeHistoryPlotterUIFigure, ...
         'Message', 'Plotting, please wait');
 drawnow
 
-[bMissingData] = plotting.plotFigure(curTemplate, curTHData, ...
+[bMissingData, strError] = plotting.plotFigure(curTemplate, curTHData, ...
         app.TimeHistoryPlotterUIFigure, app.LoadedFilesListBox.Value);
 
 hwb.Value = 1.0; 
 drawnow
 delete(hwb)
+
+if ~isempty(strError)
+    uialert(app.TimeHistoryPlotterUIFigure, ...
+        strError, 'error', ...
+        "Icon", "error");
+end
 
 if (bMissingData)
     uialert(app.TimeHistoryPlotterUIFigure, ...

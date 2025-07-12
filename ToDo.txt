@@ -10,7 +10,7 @@ time format - continue testing
 
 
 --- Required before release --- 
-spell check
+
 
 --- Big features to add ---
 Command line control, load data and templates in mfile - call plotting to get plot
@@ -31,6 +31,7 @@ search: add && option
 figure
 	values at time
 	include ylable at figure option
+	link x axes
 
 axis
 	thick
@@ -42,14 +43,10 @@ line
 	legend string
 	vert line at change
 	values at time
-
-
-
---- lines tools --- 
-add errorbar 
-add	rate limiter
-inflection points (?)
-remove outliers
+	add errorbar 
+	add	rate limiter
+	inflection points (?)
+	remove outliers
 
 
 % "aapl_history" date fomat MMM d yyyy

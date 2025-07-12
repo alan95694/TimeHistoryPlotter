@@ -7,7 +7,8 @@ if isempty(app.tHData)
     return
 end
 
-fn = fieldnames(app.tHData.(app.LoadedFilesListBox.Value));
+strTmp = matlab.lang.makeValidName(app.LoadedFilesListBox.Value);
+fn = fieldnames(app.tHData.(strTmp));
 
 if isempty(inpTxt)
     app.DataChannelsListBox.Items = fn;

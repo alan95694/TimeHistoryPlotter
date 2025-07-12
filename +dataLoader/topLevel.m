@@ -38,7 +38,6 @@ pause(0.25)
 
 %% Read file
 % Read CSV file into a table
-% T = readtable(file, ReadRowNames = true);
 T = readtable(file);
 
 % Convert table to structure (column-wise fields)

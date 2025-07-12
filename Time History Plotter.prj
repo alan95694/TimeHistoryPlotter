@@ -1,15 +1,25 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1674436676" file="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter\Time History Plotter.prj" location="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter" name="Time History Plotter" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="264780453" file="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter\Time History Plotter.prj" location="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter" name="Time History Plotter" target="target.mlapps" target-name="Package App">
     <param.appname>Time History Plotter</param.appname>
     <param.authnamewatermark>Chris Wilkening</param.authnamewatermark>
     <param.email />
     <param.company />
-    <param.icon />
-    <param.icons />
+    <param.icon>${PROJECT_ROOT}\Time History Plotter_resources\icon_24.png</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\Time History Plotter_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\Time History Plotter_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\Time History Plotter_resources\icon_16.png</file>
+    </param.icons>
     <param.summary>Time History Plotter</param.summary>
-    <param.description>Load time history data files, plot contents with reusable templates.  Great for examining multiple files or during data exploration.</param.description>
-    <param.screenshot>C:\Users\alanc\AppData\Local\Temp\tp55b83691_63f0_4b32_99b6_7eb1734123ca.png</param.screenshot>
-    <param.version>0.1</param.version>
+    <param.description>Load time history data files, plot contents with reusable customizable templates.  Generated figures are of good presentation quality and fully labeled.  
+
+Great for exploratory data analysis and making quick quality plots.  
+
+Tool can mathematically manipulate loaded data, apply filters, integrate, differentiate, normalize, convert units etc.
+
+Plotting line and marker properties can be easily specified.  </param.description>
+    <param.screenshot>C:\Users\alanc\AppData\Local\Temp\tp5c56be8b_4b68_4a08_b99c_73c2054129c5.png</param.screenshot>
+    <param.version>1.0</param.version>
     <param.products.name />
     <param.products.id />
     <param.products.version />
@@ -19,8 +29,7 @@
     <unset>
       <param.email />
       <param.company />
-      <param.icon />
-      <param.icons />
+      <param.version />
       <param.products.name />
       <param.products.id />
       <param.products.version />
@@ -31,7 +40,14 @@
       <file>${PROJECT_ROOT}\timeHistoryPlotter.mlapp</file>
     </fileset.main>
     <fileset.depfun />
-    <fileset.resources />
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\+dataLoader</file>
+      <file>${PROJECT_ROOT}\+guiControl</file>
+      <file>${PROJECT_ROOT}\+plotting</file>
+      <file>${PROJECT_ROOT}\+templateLoader</file>
+      <file>${PROJECT_ROOT}\+units</file>
+      <file>${PROJECT_ROOT}\demoData</file>
+    </fileset.resources>
     <fileset.package />
     <build-deliverables>
       <file location="C:\Users\alanc\matlabProjects\HomeProjects_2025" name="TimeHistoryPlotter" optional="false">C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter</file>

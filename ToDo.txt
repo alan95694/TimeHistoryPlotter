@@ -67,8 +67,44 @@ pause(0.25)
 delete(hProgDlg)
 
 
-================
+================================================================================
 
+
+Demo video
+
+1) Load csv format demo data
+	click on files, show channels
+	
+2) DemoData_02 add channels to template, 3 axes, two with multiple lines
+	rename template
+	rename Axes
+	plot
+	Switch to DemoData_03 -> plot
+
+3) Copy template
+	make two of same lines in an axis, math to one, filter to other
+	Add text and figure options
+	plot
+
+4) Other features
+	disable an axis
+	change y min/max
+	yy right
+	normalize
+	figure size / figure number / tile spacing
+	vertical lines
+	Units
+
+5) Load time history
+	plot with rowIndex
+	Preview data
+	Date Time Format
+	plot
+
+6) Save and load template
+
+
+		
 
 
 

@@ -35,7 +35,7 @@ doTheThing(app, 'fig', 'TextInterpreterDropDown',   'dd_textInterp',  'dd', 'non
 doTheThing(app, 'axis', 'TightCheckBox',            'b_tight',      'bool', false);
 doTheThing(app, 'axis', 'DontShowAxisCheckBox',     'b_dontShow',   'bool', false);
 doTheThing(app, 'axis', 'logyCheckBox',             'b_logy',       'bool', false);
-doTheThing(app, 'axis', 'AxisNameasylabelCheckBox', 'b_AxisNameYLabel', 'bool', true);
+doTheThing(app, 'axis', 'AxisNameasylabelCheckBox', 'b_AxisNameYLabel', 'bool', false);
 
 
 % String

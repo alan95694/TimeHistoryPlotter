@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="264780453" file="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter\Time History Plotter.prj" location="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter" name="Time History Plotter" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="2965598902" file="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter\Time History Plotter.prj" location="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter" name="Time History Plotter" target="target.mlapps" target-name="Package App">
     <param.appname>Time History Plotter</param.appname>
     <param.authnamewatermark>Chris Wilkening</param.authnamewatermark>
     <param.email />
@@ -18,7 +18,7 @@ Great for exploratory data analysis and making quick quality plots.  
 Tool can mathematically manipulate loaded data, apply filters, integrate, differentiate, normalize, convert units etc.
 
 Plotting line and marker properties can be easily specified.  </param.description>
-    <param.screenshot>C:\Users\alanc\AppData\Local\Temp\tp5c56be8b_4b68_4a08_b99c_73c2054129c5.png</param.screenshot>
+    <param.screenshot>C:\Users\alanc\AppData\Local\Temp\tpd24bfe57_78d3_4d1b_a19f_c4fc181df0b0.png</param.screenshot>
     <param.version>1.0</param.version>
     <param.products.name />
     <param.products.id />
@@ -47,6 +47,7 @@ Plotting line and marker properties can be easily specified.  </param.descript
       <file>${PROJECT_ROOT}\+templateLoader</file>
       <file>${PROJECT_ROOT}\+units</file>
       <file>${PROJECT_ROOT}\demoData</file>
+      <file>${PROJECT_ROOT}\icons</file>
     </fileset.resources>
     <fileset.package />
     <build-deliverables>

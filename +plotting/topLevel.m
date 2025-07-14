@@ -19,7 +19,7 @@ guiControl.guiTreeNodeCom.saveAllGuiToNode(app, app.TmpTree.SelectedNodes);
 optDisp = false;
 curTemplate = guiControl.gatherTemplateIntoStruct(app, optDisp);
 curTHData   = app.tHData.(...
-            matlab.lang.makeValidName(app.LoadedFilesListBox.Value));
+            matlab.lang.makeValidName(app.LoadedFilesListBox.Value)); 
 
 %% Make the plot
 

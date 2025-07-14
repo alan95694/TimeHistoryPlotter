@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="3761423949" file="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter\Time History Plotter.prj" location="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter" name="Time History Plotter" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="3216887904" file="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter\Time History Plotter.prj" location="C:\Users\alanc\matlabProjects\HomeProjects_2025\TimeHistoryPlotter" name="Time History Plotter" target="target.mlapps" target-name="Package App">
     <param.appname>Time History Plotter</param.appname>
     <param.authnamewatermark>Chris Wilkening</param.authnamewatermark>
     <param.email />
@@ -21,8 +21,8 @@ Line and marker properties can be easily specified.  
 Cross plotting is also possible.
 
 See linked youtube video for basic operation.  Please report bugs and request features, I intend to update the app.  </param.description>
-    <param.screenshot>C:\Users\alanc\AppData\Local\Temp\tpcb6289d3_c415_4233_9657_53cc1cec6c8b.png</param.screenshot>
-    <param.version>1.0</param.version>
+    <param.screenshot>C:\Users\alanc\AppData\Local\Temp\tp837a0a3c_1d1c_413c_be3e_b0d1a688de4c.png</param.screenshot>
+    <param.version>1.0.4</param.version>
     <param.products.name>
       <item>MATLAB</item>
     </param.products.name>
@@ -38,7 +38,6 @@ See linked youtube video for basic operation.  Please report bugs and request f
     <unset>
       <param.email />
       <param.company />
-      <param.version />
       <param.platforms />
       <param.output />
     </unset>
